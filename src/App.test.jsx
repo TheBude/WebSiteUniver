@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
+import { describe, expect, it } from 'vitest';
 import App from './App';
 
 describe('Sidebar toggle', () => {

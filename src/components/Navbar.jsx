@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function HeaderBanner() {
+export default function HeaderBanner({ isSidebarOpen, setIsSidebarOpen }) {
     const [slideIndex, setSlideIndex] = useState(0);
 
     useEffect(() => {
@@ -11,11 +11,28 @@ export default function HeaderBanner() {
         return () => clearInterval(timer);
     }, []);
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen((prev) => !prev);
+    };
+
     return (
         <div className="w-full bg-[#1b254b] text-white select-none border-b border-white/10">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6 min-h-[86px]">
                 
                 <div className="flex items-center gap-3.5 shrink-0">
+                    <button
+                        type="button"
+                        aria-label={isSidebarOpen ? 'Menyu yopish' : 'Menyu ochish'}
+                        aria-expanded={isSidebarOpen}
+                        onClick={toggleSidebar}
+                        className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-white/15 bg-white/5 text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        title={isSidebarOpen ? 'Menyu yopish' : 'Menyu ochish'}
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M4 7h16M4 12h16M4 17h16" />
+                        </svg>
+                    </button>
+
                     <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-white flex items-center justify-center p-[2px] shadow-sm overflow-hidden shrink-0">
                         <img
                             src="/SamduLogo.png"
