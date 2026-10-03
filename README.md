@@ -1,16 +1,33 @@
-# React + Vite
+# Samarqand davlat universiteti sayti
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React va Vite’da yaratilgan statik sayt. Build natijasi `dist/` papkasiga yoziladi va oddiy static hosting’ga joylanadi.
 
-Currently, two official plugins are available:
+## Talablar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20.19+ yoki 22.12+
+- npm
 
-## React Compiler
+## Ishga tushirish
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm ci
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+## Release tekshiruvi
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```sh
+npm run check
+```
+
+Bu buyruq testlarni va production build’ni bajaradi. Faqat build uchun `npm run build` ishlatiladi. Build’ni local tekshirish:
+
+```sh
+npm run preview
+```
+
+## Deploy
+
+`npm run build` muvaffaqiyatli tugagach, hosting’ga `dist/` ichidagi fayllarni joylang. Vite `base: './'` ishlatadi, shuning uchun asset’lar root domenida ham, subpath’da joylanganda ham nisbiy yo‘l bilan topiladi.
+
+Saytda backend API yoki maxfiy environment variable talab qilinmaydi. Tanlangan til brauzerning `localStorage` xotirasida saqlanadi. Navbar’dagi ijtimoiy tarmoq ikonlari hozircha placeholder havolalarsiz ko‘rsatiladi; release’dan oldin rasmiy ijtimoiy URL’lar berilsa, ularni ulash kerak.
