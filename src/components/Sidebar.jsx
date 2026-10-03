@@ -1,20 +1,11 @@
 import React from 'react';
 
 const sidebarLinks = [
-  'Universitet tuzilmasi',
-  'Rektorat',
-  'Fakultetlar va kafedralar',
-  'O‘quv rejalari va dasturlari',
-  'Ilmiy faoliyat',
-  'Xalqaro aloqalar',
-  'HEMIS axborot tizimi',
-  'Talabalar turar joyi (TTJ)',
-  'Kutubxona (E-resurslar)',
-  'Qabul komissiyasi 2026',
-  'Bitiruvchilar assotsiatsiyasi',
-  'Korrupsiyaga qarshi kurashish',
-  'Bo‘sh ish o‘rinlari',
-  'Bog‘lanish va rekvizitlar',
+  'Unversitet',
+  'Tuzilma',
+  'Foaliat',
+  'Qabul 2026',
+  'Talabalar',
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
