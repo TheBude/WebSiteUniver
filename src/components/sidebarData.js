@@ -56,7 +56,7 @@ const instituteLinks = [
 ];
 
 const structureMenus = {
-  Fakultetlar: [
+    Fakultetlar: [
     'Matematika fakulteti',
     'Geografiya va ekologiya fakulteti',
     'Tarix fakulteti',

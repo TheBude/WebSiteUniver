@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeaderBanner from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import HomeCarousel from './components/HomeCarousel';
 import { translate } from './i18n';
 
 export default function App() {
@@ -33,7 +34,7 @@ export default function App() {
       />
 
       <main className="max-w-7xl mx-auto px-6 py-10">
-        <h1 className="text-2xl font-bold text-slate-800">{translate('Bosh sahifa', language)}</h1>
+        <HomeCarousel />
       </main>
     </div>
   );
