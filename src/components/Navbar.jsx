@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
+import DisplayModeControls from './DisplayModeControls';
+import SiteSearch from './SiteSearch';
 import { translate } from '../i18n';
 
-export default function HeaderBanner({ language, onLanguageChange }) {
+export default function HeaderBanner({ language, onLanguageChange, isDarkMode, onToggleDarkMode, isVisionMode, onToggleVisionMode }) {
     const [slideIndex, setSlideIndex] = useState(0);
     const t = (text) => translate(text, language);
 
@@ -106,7 +108,15 @@ export default function HeaderBanner({ language, onLanguageChange }) {
                     </div>
                 </div>
 
-                <div className="hidden shrink-0 md:block">
+                <div className="hidden shrink-0 items-center gap-2 md:flex">
+                    <SiteSearch language={language} placement="navbar" />
+                    <DisplayModeControls
+                        language={language}
+                        isDarkMode={isDarkMode}
+                        onToggleDarkMode={onToggleDarkMode}
+                        isVisionMode={isVisionMode}
+                        onToggleVisionMode={onToggleVisionMode}
+                    />
                     <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
                 </div>
             </div>

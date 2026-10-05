@@ -2,10 +2,53 @@ import { cleanup, render, screen, fireEvent, within } from '@testing-library/rea
 import '@testing-library/jest-dom/vitest';
 import { afterEach, describe, expect, it } from 'vitest';
 import App from './App';
+import { getSearchCharacterCount, getSiteSearchResults } from './siteSearchIndex';
 
 afterEach(() => {
   cleanup();
   window.localStorage.clear();
+  document.documentElement.classList.remove('dark-mode', 'vision-mode');
+});
+
+describe('Display mode controls', () => {
+  it('toggles and remembers dark mode', () => {
+    render(<App />);
+
+    const toggles = screen.getAllByRole('button', { name: 'Tungi rejim' });
+    fireEvent.click(toggles[0]);
+
+    expect(toggles).toHaveLength(2);
+    expect(toggles[0]).toHaveAttribute('aria-pressed', 'true');
+    expect(toggles[1]).toHaveAttribute('aria-pressed', 'true');
+    expect(document.documentElement).toHaveClass('dark-mode');
+    expect(window.localStorage.getItem('samdu-dark-mode')).toBe('true');
+  });
+
+  it('toggles the high-contrast vision mode', () => {
+    render(<App />);
+
+    const toggles = screen.getAllByRole('button', { name: 'Ko‘zi ojizlar uchun rejim' });
+    fireEvent.click(toggles[0]);
+
+    expect(toggles).toHaveLength(2);
+    expect(toggles[0]).toHaveAttribute('aria-pressed', 'true');
+    expect(toggles[1]).toHaveAttribute('aria-pressed', 'true');
+    expect(document.documentElement).toHaveClass('vision-mode');
+    expect(window.localStorage.getItem('samdu-vision-mode')).toBe('true');
+  });
+});
+
+describe('Site search', () => {
+  it('waits for two characters and searches nested sections and slides', () => {
+    expect(getSearchCharacterCount('b')).toBe(1);
+    expect(getSiteSearchResults('b', 'uz')).toHaveLength(0);
+    expect(getSiteSearchResults('bu', 'uz').some((result) => result.label === 'Buxgalteriya')).toBe(true);
+    expect(getSiteSearchResults('top-500', 'uz').some((result) => result.type === 'Slayd')).toBe(true);
+  });
+
+  it('matches translated menu labels in the selected language', () => {
+    expect(getSiteSearchResults('Новости', 'ru').some((result) => result.label === 'Новости')).toBe(true);
+  });
 });
 
 describe('Sidebar toggle', () => {

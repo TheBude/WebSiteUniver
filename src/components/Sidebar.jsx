@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { translate } from '../i18n';
 import LanguageSwitcher from './LanguageSwitcher';
+import DisplayModeControls from './DisplayModeControls';
+import SiteSearch from './SiteSearch';
 import { sidebarNavigation } from './sidebarData';
 
 const sidebarIcons = {
@@ -145,7 +147,7 @@ function MenuTree({
   );
 }
 
-export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageChange }) {
+export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageChange, isDarkMode, onToggleDarkMode, isVisionMode, onToggleVisionMode }) {
   const [expandedItems, setExpandedItems] = useState(() => new Set());
 
   const toggleMenu = (id, ancestors) => {
@@ -196,6 +198,22 @@ export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageC
             language={language}
           />
         </nav>
+
+        <div className="shrink-0 border-t border-white/10 px-2 py-2 md:hidden">
+          <SiteSearch language={language} placement="sidebar" expanded={isOpen} onOpenSidebar={onOpen} />
+        </div>
+
+        <div className="shrink-0 border-t border-white/10 px-2 py-2 md:hidden">
+          <DisplayModeControls
+            language={language}
+            isDarkMode={isDarkMode}
+            onToggleDarkMode={onToggleDarkMode}
+            isVisionMode={isVisionMode}
+            onToggleVisionMode={onToggleVisionMode}
+            placement="sidebar"
+            expanded={isOpen}
+          />
+        </div>
 
         <div className="flex h-14 shrink-0 items-center justify-center border-t border-white/10 px-1 md:hidden">
           <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} placement="sidebar" compact={!isOpen} />

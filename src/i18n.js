@@ -14,6 +14,16 @@ const languageNames = {
 
 const translations = {
   'Tilni tanlash': ['Tildi tańlaw', 'Выбрать язык', 'Choose language'],
+  'Qidiruv': ['Izlew', 'Поиск', 'Search'],
+  'Qidirish...': ['Izlew...', 'Поиск...', 'Search...'],
+  'Kamida 2 ta belgi kiriting': ['Keminde 2 belgi kiritiń', 'Введите не менее 2 символов', 'Enter at least 2 characters'],
+  'Natija topilmadi': ['Nátiyje tabılmadı', 'Ничего не найдено', 'No results found'],
+  'Bo‘lim': ['Bólim', 'Раздел', 'Section'],
+  'Slayd': ['Slayd', 'Слайд', 'Slide'],
+  'Ma’lumot': ['Maǵlıwmat', 'Информация', 'Information'],
+  'Iqtibos': ['Gáp', 'Цитата', 'Quote'],
+  'Tungi rejim': ['Túngi rejim', 'Ночной режим', 'Dark mode'],
+  'Ko‘zi ojizlar uchun rejim': ['Kózi áziz adamlar ushın rejim', 'Режим для слабовидящих', 'Visual accessibility mode'],
   'Til menyusini yopish': ['Til menyusin jabıw', 'Закрыть меню языков', 'Close language menu'],
   'Menyu bo‘limi': ['Menyu bólimi', 'Разделы меню', 'Menu sections'],
   'Menyuni yopish': ['Menyudi jabıw', 'Закрыть меню', 'Close menu'],

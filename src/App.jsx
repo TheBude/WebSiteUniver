@@ -6,6 +6,8 @@ import { translate } from './i18n';
 
 export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => window.localStorage.getItem('samdu-dark-mode') === 'true');
+  const [isVisionMode, setIsVisionMode] = useState(() => window.localStorage.getItem('samdu-vision-mode') === 'true');
   const [language, setLanguage] = useState(() => {
     const savedLanguage = window.localStorage.getItem('samdu-language');
     return ['uz', 'qr', 'ru', 'en'].includes(savedLanguage) ? savedLanguage : 'uz';
@@ -21,9 +23,24 @@ export default function App() {
     document.title = translate('Samarqand davlat universiteti', language);
   }, [language]);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('dark-mode', isDarkMode);
+    root.classList.toggle('vision-mode', isVisionMode);
+    window.localStorage.setItem('samdu-dark-mode', String(isDarkMode));
+    window.localStorage.setItem('samdu-vision-mode', String(isVisionMode));
+  }, [isDarkMode, isVisionMode]);
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pl-16">
-      <HeaderBanner language={language} onLanguageChange={changeLanguage} />
+    <div className="site-shell min-h-screen pl-16">
+      <HeaderBanner
+        language={language}
+        onLanguageChange={changeLanguage}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode((mode) => !mode)}
+        isVisionMode={isVisionMode}
+        onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
+      />
 
       <Sidebar
         isOpen={isSidebarOpen}
@@ -31,6 +48,10 @@ export default function App() {
         onOpen={() => setIsSidebarOpen(true)}
         language={language}
         onLanguageChange={changeLanguage}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode((mode) => !mode)}
+        isVisionMode={isVisionMode}
+        onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
       />
 
       <main className="max-w-7xl mx-auto px-6 py-10">

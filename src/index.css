@@ -4,12 +4,26 @@
   font-family: Inter, 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #0f172a;
-  background: #f8fafc;
+  color-scheme: light;
+  --page-background: #f8fafc;
+  --page-foreground: #0f172a;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark-mode {
+  color-scheme: dark;
+  --page-background: #111827;
+  --page-foreground: #f8fafc;
+}
+
+:root.vision-mode {
+  color-scheme: dark;
+  font-size: 112.5%;
+  --page-background: #000;
+  --page-foreground: #fff;
 }
 
 html {
@@ -20,9 +34,36 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--page-foreground);
   background:
     radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 35%),
-    #f8fafc;
+    var(--page-background);
+}
+
+.site-shell {
+  min-height: 100vh;
+  color: var(--page-foreground);
+  background-color: var(--page-background);
+}
+
+:root.dark-mode body {
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 35%),
+    var(--page-background);
+}
+
+:root.vision-mode body {
+  background: var(--page-background);
+}
+
+:root.vision-mode :focus-visible {
+  outline: 3px solid #ffeb3b !important;
+  outline-offset: 3px;
+}
+
+:root.vision-mode a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 * {
