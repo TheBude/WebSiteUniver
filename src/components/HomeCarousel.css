@@ -152,8 +152,7 @@
   }
 
   .home-carousel__category {
-    margin: 0 0 2px;
-    font-size: 9px;
+    display: none;
   }
 
   .home-carousel__content h2 {
