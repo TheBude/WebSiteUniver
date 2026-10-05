@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HeaderBanner from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HomeCarousel from './components/HomeCarousel';
+import QuickServices from './components/QuickServices';
+import NewsSection from './components/NewsSection';
 import { translate } from './i18n';
 
 export default function App() {
@@ -31,6 +33,14 @@ export default function App() {
     window.localStorage.setItem('samdu-vision-mode', String(isVisionMode));
   }, [isDarkMode, isVisionMode]);
 
+  const handleServiceSelect = (service) => {
+    console.log('Tanlangan xizmat:', service);
+  };
+
+  const handleNewsSelect = (news) => {
+    console.log('Tanlangan yangilik:', news);
+  };
+
   return (
     <div className="site-shell min-h-screen pl-16">
       <HeaderBanner
@@ -55,7 +65,14 @@ export default function App() {
       />
 
       <main className="max-w-7xl mx-auto px-6 py-10">
-        <HomeCarousel />
+        {/* 1. Asosiy slayd */}
+        <HomeCarousel language={language} />
+
+        {/* 2. Tezkor xizmatlar karuseli (Hemis, Erasmus va boshqalar) */}
+        <QuickServices language={language} onServiceClick={handleServiceSelect} />
+
+        {/* 3. SamDU yangiliklar bo'limi */}
+        <NewsSection language={language} onNewsClick={handleNewsSelect} />
       </main>
     </div>
   );

@@ -1,16 +1,18 @@
 .home-carousel {
   position: relative;
   width: 100%;
-  aspect-ratio: 2.18 / 1;
-  min-height: 340px;
-  max-height: 560px;
-  margin-top: 28px;
+  min-height: 380px;
+  height: clamp(380px, 45vw, 560px);
+  margin-top: 24px;
   overflow: hidden;
+  border-radius: 12px;
   color: #fff;
   background: #152343;
   isolation: isolate;
+  user-select: none;
 }
 
+/* Slayd, rasm va qoraytirish foni */
 .home-carousel__slide,
 .home-carousel__image,
 .home-carousel__shade {
@@ -20,12 +22,12 @@
   height: 100%;
 }
 
-.home-carousel__slide {
-  animation: carousel-enter-right 700ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+.home-carousel__slide--next {
+  animation: carousel-enter-right 600ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .home-carousel__slide--previous {
-  animation-name: carousel-enter-left;
+  animation: carousel-enter-left 600ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .home-carousel__image {
@@ -34,161 +36,178 @@
 }
 
 .home-carousel__shade {
-  background: linear-gradient(90deg, rgba(9, 20, 43, 0.88) 0%, rgba(9, 20, 43, 0.6) 42%, rgba(9, 20, 43, 0.05) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(9, 20, 43, 0.88) 0%,
+    rgba(9, 20, 43, 0.65) 45%,
+    rgba(9, 20, 43, 0.15) 100%
+  );
 }
 
+/* Slayd ustidagi matnlar bloki */
 .home-carousel__content {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   top: 50%;
-  left: clamp(28px, 6.5vw, 88px);
-  width: min(560px, calc(100% - 56px));
+  left: clamp(32px, 7vw, 90px);
+  max-width: 620px;
+  width: calc(100% - 120px);
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .home-carousel__category {
-  margin: 0 0 16px;
-  color: #b9d7ff;
-  font-size: 13px;
+  margin: 0 0 12px;
+  color: #93c5fd;
+  font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .home-carousel__content h2 {
-  max-width: 560px;
   margin: 0;
-  font-size: 42px;
-  line-height: 1.12;
-  font-weight: 750;
+  font-size: clamp(24px, 3.2vw, 42px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.home-carousel__footer {
+/* Sichqoncha olib boriladigan chap va o'ng navigatsiya zonalari */
+.home-carousel__nav-zone {
   position: absolute;
-  z-index: 2;
-  right: 28px;
-  bottom: 22px;
-  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  min-width: 80px;
+  z-index: 20;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.home-carousel__nav-zone--left {
+  left: 0;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.home-carousel__nav-zone--right {
+  right: 0;
   justify-content: flex-end;
-  gap: 16px;
+  padding-right: 24px;
+}
+
+/* Shaffof strelka tugmalari */
+.home-carousel__arrow-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  user-select: none;
+}
+
+/* Sichqoncha maydonga borganida strelka paydo bo'ladi */
+.home-carousel__nav-zone:hover .home-carousel__arrow-btn {
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+/* Sichqoncha bevosita tugma ustiga borganida */
+.home-carousel__arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Pastdagi indikatorlar (Dots) */
+.home-carousel__footer {
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .home-carousel__controls {
   display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   gap: 8px;
-}
-
-.home-carousel__pause {
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: rgba(14, 29, 59, 0.58);
-  cursor: pointer;
+  align-items: center;
 }
 
 .home-carousel__dot {
   display: block;
-  width: 9px;
-  height: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(14, 29, 59, 0.58);
-  transition: width 250ms ease, background-color 250ms ease;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .home-carousel__dot.is-active {
-  width: 25px;
-  border-radius: 8px;
-  background: #fff;
+  width: 28px;
+  border-radius: 6px;
+  background: #ffffff;
 }
 
-.home-carousel__pause {
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: 2px;
-  font-size: 12px;
-}
-
-.home-carousel__pause:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.home-carousel__pause:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
-}
-
+/* O'ngdan va chapdan kirish animatsiyalari */
 @keyframes carousel-enter-right {
-  from { opacity: 0.35; transform: translateX(48px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0.3;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes carousel-enter-left {
-  from { opacity: 0.35; transform: translateX(-48px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0.3;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
+/* Mobil qurilmalar uchun moslashuv */
 @media (max-width: 640px) {
   .home-carousel {
-    aspect-ratio: 2 / 1;
-    min-height: 0;
-    max-height: none;
+    min-height: 280px;
   }
-
-  .home-carousel__shade {
-    background: linear-gradient(0deg, rgba(9, 20, 43, 0.9) 0%, rgba(9, 20, 43, 0.48) 64%, rgba(9, 20, 43, 0.12) 100%);
-  }
-
   .home-carousel__content {
-    top: auto;
-    bottom: 28px;
-    left: 12px;
-    width: calc(100% - 24px);
-    transform: none;
+    left: 20px;
+    width: calc(100% - 40px);
   }
-
-  .home-carousel__category {
-    display: none;
+  .home-carousel__arrow-btn {
+    opacity: 0.85;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
-
-  .home-carousel__content h2 {
-    font-size: 12px;
-    line-height: 1.06;
+  .home-carousel__nav-zone--left {
+    padding-left: 10px;
   }
-
-  .home-carousel__footer {
-    right: 8px;
-    bottom: 4px;
-    left: 8px;
-    gap: 4px;
-  }
-
-  .home-carousel__controls {
-    gap: 4px;
-  }
-
-  .home-carousel__dot {
-    width: 6px;
-    height: 6px;
-  }
-
-  .home-carousel__dot.is-active {
-    width: 16px;
-  }
-
-  .home-carousel__pause {
-    min-height: 24px;
-    padding: 0 6px;
-    font-size: 9px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-carousel__slide {
-    animation-duration: 1ms;
+  .home-carousel__nav-zone--right {
+    padding-right: 10px;
   }
 }
