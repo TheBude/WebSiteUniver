@@ -38,6 +38,12 @@ export default function SiteSearch({ language, placement = 'navbar', expanded = 
   const selectResult = (result) => {
     setQuery(result.label);
     setActiveIndex(-1);
+    setIsOpen(false);
+    if (result.targetHash) {
+      window.location.hash = result.targetHash;
+    } else {
+      window.location.hash = result.label;
+    }
   };
 
   const handleKeyDown = (event) => {

@@ -4,6 +4,11 @@ import Sidebar from './components/Sidebar';
 import HomeCarousel from './components/HomeCarousel';
 import QuickServices from './components/QuickServices';
 import NewsSection from './components/NewsSection';
+import UniversityStats from './components/UniversityStats';
+import RectorWelcome from './components/RectorWelcome';
+import Footer from './components/Footer';
+import InnerPage from './components/InnerPage';
+import ScrollReveal from './components/ScrollReveal';
 import { translate } from './i18n';
 
 export default function App() {
@@ -13,6 +18,13 @@ export default function App() {
   const [language, setLanguage] = useState(() => {
     const savedLanguage = window.localStorage.getItem('samdu-language');
     return ['uz', 'qr', 'ru', 'en'].includes(savedLanguage) ? savedLanguage : 'uz';
+  });
+
+  const [currentHash, setCurrentHash] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    }
+    return '';
   });
 
   const changeLanguage = (nextLanguage) => {
@@ -33,13 +45,53 @@ export default function App() {
     window.localStorage.setItem('samdu-vision-mode', String(isVisionMode));
   }, [isDarkMode, isVisionMode]);
 
+  // Hash-based SPA routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+      setCurrentHash(hash);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleNavigate = (targetHash) => {
+    window.location.hash = targetHash;
+  };
+
+  const handleBackToHome = () => {
+    window.location.hash = '';
+    setCurrentHash('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleServiceSelect = (service) => {
-    console.log('Tanlangan xizmat:', service);
+    const targetMap = {
+      'foreign-admission': 'Xorijiy talabalar uchun hujjat topshirish',
+      'tutors': 'Tyutorlik faoliyati',
+      'e-library': 'Axborot-resurs markazi',
+      'erasmus': 'Xalqaro grant-stipendiyalar',
+      'hemis-univer': 'Samarqand davlat universiteti “Registrator ofisi”',
+      'hemis-talaba': 'Talabalar hayoti',
+      'hemis-uz': 'Talabalar hayoti',
+      'unilibrary': 'Axborot-resurs markazi',
+      'interactive-services': 'Unversitet tuzilmasi',
+    };
+    const target = targetMap[service.id] || 'Unversitet tuzilmasi';
+    window.location.hash = target;
   };
 
   const handleNewsSelect = (news) => {
-    console.log('Tanlangan yangilik:', news);
+    if (news.id === 'all') {
+      window.location.hash = 'Yangiliklar';
+    } else {
+      window.location.hash = 'Unversitet yangiliklari';
+    }
   };
+
+  const isHomeView = !currentHash || currentHash === 'bosh-sahifa' || currentHash === 'main';
 
   return (
     <div className="site-shell min-h-screen pl-16">
@@ -64,16 +116,50 @@ export default function App() {
         onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
       />
 
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        {/* 1. Asosiy slayd */}
-        <HomeCarousel language={language} />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        {/* Test va a11y uchun bosh sahifa sarlavhasi */}
+        <h1 className="sr-only">{translate('Bosh sahifa', language)}</h1>
 
-        {/* 2. Tezkor xizmatlar karuseli (Hemis, Erasmus va boshqalar) */}
-        <QuickServices language={language} onServiceClick={handleServiceSelect} />
+        {isHomeView ? (
+          <>
+            {/* 1. Asosiy slayd */}
+            <ScrollReveal>
+              <HomeCarousel language={language} />
+            </ScrollReveal>
 
-        {/* 3. SamDU yangiliklar bo'limi */}
-        <NewsSection language={language} onNewsClick={handleNewsSelect} />
+            {/* 2. Tezkor interaktiv xizmatlar paneli (Hemis, Erasmus, Kutubxona va boshqalar) */}
+            <ScrollReveal>
+              <QuickServices language={language} onServiceClick={handleServiceSelect} />
+            </ScrollReveal>
+
+            {/* 3. Raqamlarda SamDU (Talabalar, professorlar, reyting, fakultetlar) */}
+            <ScrollReveal>
+              <UniversityStats language={language} />
+            </ScrollReveal>
+
+            {/* 4. So‘nggi yangiliklar va e’lonlar bo'limi */}
+            <ScrollReveal>
+              <NewsSection language={language} onNewsClick={handleNewsSelect} />
+            </ScrollReveal>
+
+            {/* 5. Rektor murojaati va ilmiy salohiyat bloki */}
+            <ScrollReveal>
+              <RectorWelcome language={language} onNavigate={handleNavigate} />
+            </ScrollReveal>
+          </>
+        ) : (
+          /* To'liq SPA ichki sahifa ko'rinishi */
+          <InnerPage
+            pageIdentifier={currentHash}
+            language={language}
+            onBack={handleBackToHome}
+            onNavigate={handleNavigate}
+          />
+        )}
       </main>
+
+      {/* 6. Rasmiy Footer */}
+      <Footer language={language} onNavigate={handleNavigate} />
     </div>
   );
 }

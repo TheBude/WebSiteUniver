@@ -1,0 +1,243 @@
+
+.samdu-stats-section {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 45px;
+}
+
+.samdu-stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+:root.dark-mode .samdu-stats-header {
+  border-bottom-color: #334155;
+}
+
+:root.vision-mode .samdu-stats-header {
+  border-bottom-color: #ffeb3b;
+}
+
+.samdu-stats-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.samdu-stats-badge-line {
+  width: 6px;
+  height: 36px;
+  background: #2563eb;
+  border-radius: 4px;
+}
+
+.samdu-stats-subtitle {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+:root.dark-mode .samdu-stats-subtitle {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-stats-subtitle {
+  color: #ffeb3b;
+}
+
+.samdu-stats-main-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 750;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+:root.dark-mode .samdu-stats-main-title {
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-stats-main-title {
+  color: #fff;
+}
+
+.samdu-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.samdu-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.samdu-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #93c5fd;
+  box-shadow: 0 14px 30px -4px rgba(37, 99, 235, 0.14);
+}
+
+:root.dark-mode .samdu-stat-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+:root.dark-mode .samdu-stat-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+:root.vision-mode .samdu-stat-card {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.samdu-stat-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.samdu-stat-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.samdu-stat-card:hover .samdu-stat-icon-wrap {
+  transform: scale(1.08);
+  background: #2563eb;
+  color: #ffffff;
+}
+
+:root.dark-mode .samdu-stat-icon-wrap {
+  background: #0f172a;
+  color: #60a5fa;
+}
+
+:root.dark-mode .samdu-stat-card:hover .samdu-stat-icon-wrap {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-stat-icon-wrap {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-stat-pill {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #475569;
+  letter-spacing: 0.03em;
+}
+
+:root.dark-mode .samdu-stat-pill {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+:root.vision-mode .samdu-stat-pill {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-stat-number {
+  font-size: 32px;
+  font-weight: 850;
+  line-height: 1.15;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+:root.dark-mode .samdu-stat-number {
+  color: #93c5fd;
+}
+
+:root.vision-mode .samdu-stat-number {
+  color: #ffeb3b;
+}
+
+.samdu-stat-label {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+:root.dark-mode .samdu-stat-label {
+  color: #f1f5f9;
+}
+
+:root.vision-mode .samdu-stat-label {
+  color: #fff;
+}
+
+.samdu-stat-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+:root.dark-mode .samdu-stat-sub {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-stat-sub {
+  color: #ccc;
+}
+
+@media (max-width: 992px) {
+  .samdu-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .samdu-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .samdu-stat-card {
+    padding: 18px 16px;
+  }
+  .samdu-stat-number {
+    font-size: 26px;
+  }
+}

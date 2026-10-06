@@ -1,0 +1,336 @@
+
+.samdu-rector-section {
+  width: 100%;
+  margin-top: 45px;
+  margin-bottom: 50px;
+}
+
+.samdu-rector-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.samdu-rector-card:hover {
+  box-shadow: 0 16px 36px -4px rgba(37, 99, 235, 0.12);
+  border-color: #bfdbfe;
+}
+
+:root.dark-mode .samdu-rector-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+:root.dark-mode .samdu-rector-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+:root.vision-mode .samdu-rector-card {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-rector-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.samdu-rector-img-box {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  height: 330px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.samdu-rector-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.samdu-rector-card:hover .samdu-rector-img {
+  transform: scale(1.04);
+}
+
+.samdu-rector-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(15, 29, 56, 0.88);
+  backdrop-filter: blur(6px);
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.samdu-rector-caption {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.samdu-rector-name {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 750;
+  color: #0f172a;
+}
+
+:root.dark-mode .samdu-rector-name {
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-rector-name {
+  color: #ffeb3b;
+}
+
+.samdu-rector-role {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+:root.dark-mode .samdu-rector-role {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-rector-role {
+  color: #fff;
+}
+
+.samdu-rector-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.samdu-rector-head {
+  margin-bottom: 16px;
+}
+
+.samdu-rector-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+:root.dark-mode .samdu-rector-badge {
+  background: #0f172a;
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-rector-badge {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-rector-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+:root.dark-mode .samdu-rector-title {
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-rector-title {
+  color: #fff;
+}
+
+.samdu-rector-quote {
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #334155;
+}
+
+:root.dark-mode .samdu-rector-quote {
+  background: #0f172a;
+  color: #cbd5e1;
+  border-left-color: #3b82f6;
+}
+
+:root.vision-mode .samdu-rector-quote {
+  background: #000;
+  color: #fff;
+  border-left-color: #ffeb3b;
+}
+
+.samdu-rector-quote p {
+  margin: 0;
+}
+
+.samdu-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.samdu-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+:root.dark-mode .samdu-pillar-item {
+  background: #0f172a;
+}
+
+:root.vision-mode .samdu-pillar-item {
+  background: #000;
+  border: 1px solid #ffeb3b;
+}
+
+.samdu-pillar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2563eb;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+:root.dark-mode .samdu-pillar-dot {
+  background: #60a5fa;
+}
+
+:root.vision-mode .samdu-pillar-dot {
+  background: #ffeb3b;
+}
+
+.samdu-pillar-title {
+  margin: 0 0 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+:root.dark-mode .samdu-pillar-title {
+  color: #f1f5f9;
+}
+
+:root.vision-mode .samdu-pillar-title {
+  color: #ffeb3b;
+}
+
+.samdu-pillar-desc {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+:root.dark-mode .samdu-pillar-desc {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-pillar-desc {
+  color: #ccc;
+}
+
+.samdu-rector-actions {
+  display: flex;
+  align-items: center;
+}
+
+.samdu-rector-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 650;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.samdu-rector-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.samdu-rector-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+}
+
+.samdu-rector-btn:hover svg {
+  transform: translateX(4px);
+}
+
+:root.dark-mode .samdu-rector-btn {
+  background: #3b82f6;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+:root.dark-mode .samdu-rector-btn:hover {
+  background: #2563eb;
+}
+
+:root.vision-mode .samdu-rector-btn {
+  background: #ffeb3b;
+  color: #000;
+  font-weight: bold;
+}
+
+@media (max-width: 980px) {
+  .samdu-rector-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+  .samdu-rector-img-box {
+    max-width: 240px;
+    height: 280px;
+  }
+  .samdu-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
