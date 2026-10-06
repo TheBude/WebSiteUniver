@@ -4,7 +4,16 @@ import DisplayModeControls from './DisplayModeControls';
 import SiteSearch from './SiteSearch';
 import { translate } from '../i18n';
 
-export default function HeaderBanner({ language, onLanguageChange, isDarkMode, onToggleDarkMode, isVisionMode, onToggleVisionMode }) {
+export default function HeaderBanner({
+    language,
+    onLanguageChange,
+    isDarkMode,
+    onToggleDarkMode,
+    isVisionMode,
+    onToggleVisionMode,
+    isSidebarOpen,
+    onToggleSidebar,
+}) {
     const [slideIndex, setSlideIndex] = useState(0);
     const t = (text) => translate(text, language);
 
@@ -26,6 +35,22 @@ export default function HeaderBanner({ language, onLanguageChange, isDarkMode, o
         <header className="sticky top-0 z-40 w-full bg-[#1b254b] text-white select-none border-b border-white/10 shadow-md transition-shadow">
             <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-6 min-h-[58px] sm:min-h-[86px]">
                 
+                {/* Mobile Hamburger Burger Button (Navbar bilan birlashgan) */}
+                <button
+                    type="button"
+                    onClick={onToggleSidebar}
+                    aria-label={t(isSidebarOpen ? 'Menyuni yopish' : 'Menyuni ochish')}
+                    aria-expanded={Boolean(isSidebarOpen)}
+                    className="flex md:hidden items-center justify-center h-10 w-10 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 shrink-0 border border-white/15 shadow-sm"
+                    title={t('Asosiy menyu')}
+                >
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                        <path className={`origin-center transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-y-[5px] rotate-45' : ''}`} d="M4 7h16" />
+                        <path className={`transition-opacity duration-200 ${isSidebarOpen ? 'opacity-0' : 'opacity-100'}`} d="M4 12h16" />
+                        <path className={`origin-center transition-transform duration-300 ease-in-out ${isSidebarOpen ? '-translate-y-[5px] -rotate-45' : ''}`} d="M4 17h16" />
+                    </svg>
+                </button>
+
                 <a
                     href="#"
                     onClick={handleLogoClick}

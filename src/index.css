@@ -158,6 +158,20 @@ body {
 .scroll-reveal.reveal-cascade.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
 .scroll-reveal.reveal-cascade.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
 
+/* ========================================================
+   Sidebar Mobile & Cascade Animations
+   ======================================================== */
+@keyframes sidebarSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal,
   .scroll-reveal > * {

@@ -95,7 +95,7 @@ export default function App() {
   const isHomeView = !currentHash || currentHash === 'bosh-sahifa' || currentHash === 'main';
 
   return (
-    <div className="site-shell min-h-screen pl-16">
+    <div className="site-shell min-h-screen pl-0 md:pl-16">
       <HeaderBanner
         language={language}
         onLanguageChange={changeLanguage}
@@ -103,6 +103,8 @@ export default function App() {
         onToggleDarkMode={() => setIsDarkMode((mode) => !mode)}
         isVisionMode={isVisionMode}
         onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
+        isSidebarOpen={isSidebarOpen}
+        onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
       />
 
       <Sidebar

@@ -27,6 +27,7 @@ const translations = {
   'Til menyusini yopish': ['Til menyusin jabıw', 'Закрыть меню языков', 'Close language menu'],
   'Menyu bo‘limi': ['Menyu bólimi', 'Разделы меню', 'Menu sections'],
   'Menyuni yopish': ['Menyudi jabıw', 'Закрыть меню', 'Close menu'],
+  'Menyuni ochish': ['Menyudi ashıw', 'Открыть меню', 'Open menu'],
   'Bo‘limlar panelini kengaytirish': ['Bólimler panelin ashıw', 'Развернуть панель разделов', 'Expand sections panel'],
   'Asosiy menyu': ['Bas menyu', 'Главное меню', 'Main menu'],
   'Bosh sahifa': ['Bas bet', 'Главная', 'Home'],

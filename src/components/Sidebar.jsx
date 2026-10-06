@@ -56,7 +56,7 @@ function MenuTree({
       ? 'space-y-1'
       : `mt-1 space-y-1 border-l border-white/10 ${depth === 1 ? 'ml-6 pl-3' : 'ml-3 pl-2'}`}
     >
-      {items.map((item) => {
+      {items.map((item, itemIndex) => {
         const parentId = ancestors[ancestors.length - 1];
         const id = item.id ?? createMenuId(item.label, parentId);
         const hasChildren = Boolean(item.children?.length);
@@ -64,6 +64,10 @@ function MenuTree({
         const itemClassName = rootLevel
           ? `flex h-11 w-full items-center gap-3 rounded-lg text-left text-sm text-slate-200 transition-colors hover:bg-blue-600/30 hover:text-white ${isSidebarOpen ? 'px-3.5' : 'justify-center px-0'}`
           : 'flex min-h-9 w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm text-slate-300 transition-colors hover:bg-blue-600/30 hover:text-white';
+
+        const itemAnimation = isSidebarOpen && rootLevel
+          ? { animation: `sidebarSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) ${Math.min(itemIndex * 40, 360)}ms both` }
+          : undefined;
 
         if (hasChildren) {
           const handleToggle = () => {
@@ -75,7 +79,7 @@ function MenuTree({
           };
 
           return (
-            <div key={id}>
+            <div key={id} style={itemAnimation}>
               <button
                 type="button"
                 onClick={handleToggle}
@@ -130,6 +134,7 @@ function MenuTree({
             onClick={onCloseSidebar}
             aria-label={t(item.label)}
             title={rootLevel && !isSidebarOpen ? t(item.label) : undefined}
+            style={itemAnimation}
             className={itemClassName}
           >
             {rootLevel && item.icon && (
@@ -164,12 +169,18 @@ export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageC
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px] transition-opacity duration-300"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px] transition-opacity duration-300 md:bg-black/40"
           aria-hidden="true"
         />
       )}
 
-      <aside className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col overflow-hidden border-r border-blue-900/40 bg-[#161f3e] text-slate-100 shadow-2xl transition-[width] duration-300 ease-in-out ${isOpen ? 'w-72 sm:w-80' : 'w-16'}`}>
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col overflow-hidden border-r border-blue-900/40 bg-[#161f3e] text-slate-100 shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isOpen
+            ? 'w-72 sm:w-80 translate-x-0 shadow-[12px_0_40px_rgba(15,23,42,0.7)]'
+            : '-translate-x-full md:translate-x-0 w-72 md:w-16 shadow-none md:shadow-xl'
+        }`}
+      >
         <div className={`flex h-[73px] shrink-0 items-center border-b border-white/10 bg-[#121a35] ${isOpen ? 'justify-between px-6' : 'justify-center px-2'}`}>
           {isOpen && (
             <div className="flex items-center gap-2 whitespace-nowrap">
