@@ -192,22 +192,40 @@
 /* Mobil qurilmalar uchun moslashuv */
 @media (max-width: 640px) {
   .home-carousel {
-    min-height: 280px;
+    min-height: 250px;
+    height: clamp(250px, 55vw, 320px);
+    margin-top: 14px;
+    border-radius: 12px;
   }
   .home-carousel__content {
-    left: 20px;
-    width: calc(100% - 40px);
+    left: 16px;
+    width: calc(100% - 32px);
+  }
+  .home-carousel__category {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .home-carousel__content h2 {
+    font-size: clamp(14px, 4.2vw, 18px);
+    line-height: 1.25;
   }
   .home-carousel__arrow-btn {
     opacity: 0.85;
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
   }
   .home-carousel__nav-zone--left {
-    padding-left: 10px;
+    padding-left: 8px;
   }
   .home-carousel__nav-zone--right {
-    padding-right: 10px;
+    padding-right: 8px;
+  }
+  .home-carousel__dot {
+    width: 6px;
+    height: 6px;
+  }
+  .home-carousel__dot.is-active {
+    width: 18px;
   }
 }

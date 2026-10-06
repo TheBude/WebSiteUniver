@@ -101,11 +101,12 @@ describe('Sidebar toggle', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Unversitet' }));
     fireEvent.click(screen.getByRole('button', { name: 'Unversitet yangiliklari' }));
 
-    expect(screen.getByText('Yangiliklar')).toBeInTheDocument();
-    expect(screen.getByText("E'lonlar")).toBeInTheDocument();
-    expect(screen.getByText('Xalqaro grant-stipendiyalar')).toBeInTheDocument();
-    expect(screen.getByText('Fotogalereya')).toBeInTheDocument();
-    expect(screen.getByText('Videogalereya')).toBeInTheDocument();
+    const sidebar = screen.getByRole('complementary');
+    expect(within(sidebar).getByText('Yangiliklar')).toBeInTheDocument();
+    expect(within(sidebar).getByText("E'lonlar")).toBeInTheDocument();
+    expect(within(sidebar).getByText('Xalqaro grant-stipendiyalar')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Fotogalereya')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Videogalereya')).toBeInTheDocument();
   });
 
   it('shows university information links when its submenu is clicked', () => {
@@ -115,14 +116,15 @@ describe('Sidebar toggle', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Unversitet' }));
     fireEvent.click(screen.getByRole('button', { name: 'Unversitet haqida' }));
 
-    expect(screen.getByText('Unversitet tarixi')).toBeInTheDocument();
-    expect(screen.getByText('Unversitet nizomi')).toBeInTheDocument();
-    expect(screen.getByText('Unversitet tuzilmasi')).toBeInTheDocument();
-    expect(screen.getByText('Rekvizitlar')).toBeInTheDocument();
-    expect(screen.getByText('Aloqa')).toBeInTheDocument();
-    expect(screen.getByText('Bitirganlar assotsiatsiyasi')).toBeInTheDocument();
-    expect(screen.getByText('Yashil universitet')).toBeInTheDocument();
-    expect(screen.getByText('Barqaror rivojlanish')).toBeInTheDocument();
+    const sidebar = screen.getByRole('complementary');
+    expect(within(sidebar).getByText('Unversitet tarixi')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Unversitet nizomi')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Unversitet tuzilmasi')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Rekvizitlar')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Aloqa')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Bitirganlar assotsiatsiyasi')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Yashil universitet')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Barqaror rivojlanish')).toBeInTheDocument();
   });
 
   it('shows document categories when Hujjatlar is clicked', () => {
@@ -148,14 +150,15 @@ describe('Sidebar toggle', () => {
     fireEvent.click(screen.getByRole('button', { name: /panelini kengaytirish/i }));
     fireEvent.click(screen.getByRole('button', { name: 'Tuzilma' }));
 
-    expect(screen.getByText('Rahbariyat')).toBeInTheDocument();
-    expect(screen.getByText('Institutlar')).toBeInTheDocument();
-    expect(screen.getByText('Fakultetlar')).toBeInTheDocument();
-    expect(screen.getByText('Kafedralar')).toBeInTheDocument();
-    expect(screen.getByText("Boshqarma va bo'limlar")).toBeInTheDocument();
-    expect(screen.getByText('Markazlar')).toBeInTheDocument();
-    expect(screen.getAllByText("Xorijiy o'qituvchilar")).toHaveLength(2);
-    expect(screen.getByText('Kengashlar')).toBeInTheDocument();
+    const sidebar = screen.getByRole('complementary');
+    expect(within(sidebar).getByText('Rahbariyat')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Institutlar')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Fakultetlar')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Kafedralar')).toBeInTheDocument();
+    expect(within(sidebar).getByText("Boshqarma va bo'limlar")).toBeInTheDocument();
+    expect(within(sidebar).getByText('Markazlar')).toBeInTheDocument();
+    expect(within(sidebar).getAllByText("Xorijiy o'qituvchilar")).toHaveLength(2);
+    expect(within(sidebar).getByText('Kengashlar')).toBeInTheDocument();
   });
 
   it('shows leadership roles when Rahbariyat is clicked', () => {
@@ -165,15 +168,16 @@ describe('Sidebar toggle', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Tuzilma' }));
     fireEvent.click(screen.getByRole('button', { name: 'Rahbariyat' }));
 
-    expect(screen.getByText('Universitet rektori')).toBeInTheDocument();
-    expect(screen.getByText("O'quv ishlari bo'yicha birinchi prorektor")).toBeInTheDocument();
-    expect(screen.getByText("O'quv ishlari bo'yicha prorektor")).toBeInTheDocument();
-    expect(screen.getByText('Ilmiy ishlar va innovatsiyalar bo‘yicha prorektor')).toBeInTheDocument();
-    expect(screen.getByText('Yoshlar masalalari va ma’naviy-ma’rifiy ishlar bo‘yicha birinchi prorektor')).toBeInTheDocument();
-    expect(screen.getByText("Moliya va iqtisod ishlari bo'yicha prorektor")).toBeInTheDocument();
-    expect(screen.getByText("Xalqaro hamkorlik bo'yicha prorektor")).toBeInTheDocument();
-    expect(screen.getByText("Qurilish-ta'mirlash ishlari bo'yicha prorektor")).toBeInTheDocument();
-    expect(screen.getByText('Transformatsiya ofisi')).toBeInTheDocument();
+    const sidebar = screen.getByRole('complementary');
+    expect(within(sidebar).getByText('Universitet rektori')).toBeInTheDocument();
+    expect(within(sidebar).getByText("O'quv ishlari bo'yicha birinchi prorektor")).toBeInTheDocument();
+    expect(within(sidebar).getByText("O'quv ishlari bo'yicha prorektor")).toBeInTheDocument();
+    expect(within(sidebar).getByText('Ilmiy ishlar va innovatsiyalar bo‘yicha prorektor')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Yoshlar masalalari va ma’naviy-ma’rifiy ishlar bo‘yicha birinchi prorektor')).toBeInTheDocument();
+    expect(within(sidebar).getByText("Moliya va iqtisod ishlari bo'yicha prorektor")).toBeInTheDocument();
+    expect(within(sidebar).getByText("Xalqaro hamkorlik bo'yicha prorektor")).toBeInTheDocument();
+    expect(within(sidebar).getByText("Qurilish-ta'mirlash ishlari bo'yicha prorektor")).toBeInTheDocument();
+    expect(within(sidebar).getByText('Transformatsiya ofisi')).toBeInTheDocument();
   });
 
   it('shows institute names when Institutlar is clicked', () => {

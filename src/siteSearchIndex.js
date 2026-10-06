@@ -96,6 +96,16 @@ const quickServicesList = [
     terms: ['xizmat', 'xizmatlar', 'interaktiv', 'portal'],
     targetHash: 'Unversitet tuzilmasi',
   },
+  {
+    title: {
+      uz: 'Talabalar stipendiyalari (SamDU)',
+      qr: 'Studentler stipendiyaları (SamDU)',
+      ru: 'Стипендии студентов (СамГУ)',
+      en: 'Student Scholarships (SamSU)',
+    },
+    terms: ['stipendiya', 'stipendiyalar', 'grant', 'kontrakt', 'alochi', 'miqdori', 'talaba stipendiyalar', 'scholarship', 'стипендия', 'стипендии'],
+    targetHash: 'Stipendiyalar',
+  },
 ];
 
 // Raqamlarda SamDU statistik ko'rsatkichlari

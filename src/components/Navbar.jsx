@@ -16,12 +16,23 @@ export default function HeaderBanner({ language, onLanguageChange, isDarkMode, o
         return () => clearInterval(timer);
     }, []);
 
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+        window.location.hash = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <div className="w-full bg-[#1b254b] text-white select-none border-b border-white/10">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6 min-h-[86px]">
+        <header className="sticky top-0 z-40 w-full bg-[#1b254b] text-white select-none border-b border-white/10 shadow-md transition-shadow">
+            <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-6 min-h-[58px] sm:min-h-[86px]">
                 
-                <div className="flex min-w-0 flex-1 items-center gap-2 md:flex-none md:gap-3.5">
-                    <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center p-[2px] shadow-sm overflow-hidden shrink-0 sm:h-14 sm:w-14">
+                <a
+                    href="#"
+                    onClick={handleLogoClick}
+                    className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3.5 cursor-pointer no-underline text-inherit group focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-0.5"
+                    title={t('Bosh sahifa')}
+                >
+                    <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center p-[2px] shadow-sm overflow-hidden shrink-0 sm:h-14 sm:w-14 transition-transform group-hover:scale-105">
                         <img
                             src={`${import.meta.env.BASE_URL}SamduLogo.png`}
                             alt={t('SamDu Gerbi')}
@@ -39,14 +50,14 @@ export default function HeaderBanner({ language, onLanguageChange, isDarkMode, o
                     </div>
                     
                     <div className="flex min-w-0 flex-col text-left font-sans">
-                        <span className="break-words text-[11px] font-black leading-tight tracking-wide text-slate-100 uppercase sm:text-sm">
+                        <span className="break-words text-[10px] sm:text-sm font-black leading-tight tracking-wide text-slate-100 uppercase group-hover:text-blue-200 transition-colors">
                             {t('SHAROF RASHIDOV NOMIDAGI')}
                         </span>
-                        <span className="break-words text-xs font-black tracking-normal text-white uppercase leading-tight sm:text-base sm:tracking-wider">
+                        <span className="break-words text-[11px] sm:text-base font-black tracking-normal text-white uppercase leading-tight group-hover:text-blue-100 transition-colors">
                             {t('SAMARQAND DAVLAT UNIVERSITETI')}
                         </span>
                     </div>
-                </div>
+                </a>
 
                 <div className="hidden md:block flex-1 max-w-[640px] h-[58px] overflow-hidden relative">
                     <div 
@@ -120,6 +131,6 @@ export default function HeaderBanner({ language, onLanguageChange, isDarkMode, o
                     <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
                 </div>
             </div>
-        </div>
+        </header>
     );
 }

@@ -161,7 +161,13 @@ export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageC
 
   return (
     <>
-      {isOpen && <div onClick={onClose} className="fixed inset-0 z-40 bg-transparent" />}
+      {isOpen && (
+        <div
+          onClick={onClose}
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px] transition-opacity duration-300"
+          aria-hidden="true"
+        />
+      )}
 
       <aside className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col overflow-hidden border-r border-blue-900/40 bg-[#161f3e] text-slate-100 shadow-2xl transition-[width] duration-300 ease-in-out ${isOpen ? 'w-72 sm:w-80' : 'w-16'}`}>
         <div className={`flex h-[73px] shrink-0 items-center border-b border-white/10 bg-[#121a35] ${isOpen ? 'justify-between px-6' : 'justify-center px-2'}`}>

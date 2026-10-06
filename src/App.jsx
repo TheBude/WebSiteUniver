@@ -77,6 +77,7 @@ export default function App() {
       'hemis-talaba': 'Talabalar hayoti',
       'hemis-uz': 'Talabalar hayoti',
       'unilibrary': 'Axborot-resurs markazi',
+      'scholarships': 'Stipendiyalar',
       'interactive-services': 'Unversitet tuzilmasi',
     };
     const target = targetMap[service.id] || 'Unversitet tuzilmasi';
@@ -116,34 +117,34 @@ export default function App() {
         onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
         {/* Test va a11y uchun bosh sahifa sarlavhasi */}
         <h1 className="sr-only">{translate('Bosh sahifa', language)}</h1>
 
         {isHomeView ? (
           <>
             {/* 1. Asosiy slayd */}
-            <ScrollReveal>
+            <ScrollReveal animation="fade-up">
               <HomeCarousel language={language} />
             </ScrollReveal>
 
             {/* 2. Tezkor interaktiv xizmatlar paneli (Hemis, Erasmus, Kutubxona va boshqalar) */}
-            <ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={60}>
               <QuickServices language={language} onServiceClick={handleServiceSelect} />
             </ScrollReveal>
 
             {/* 3. Raqamlarda SamDU (Talabalar, professorlar, reyting, fakultetlar) */}
-            <ScrollReveal>
+            <ScrollReveal animation="fade-up">
               <UniversityStats language={language} />
             </ScrollReveal>
 
             {/* 4. So‘nggi yangiliklar va e’lonlar bo'limi */}
-            <ScrollReveal>
+            <ScrollReveal animation="fade-up">
               <NewsSection language={language} onNewsClick={handleNewsSelect} />
             </ScrollReveal>
 
             {/* 5. Rektor murojaati va ilmiy salohiyat bloki */}
-            <ScrollReveal>
+            <ScrollReveal animation="zoom-in">
               <RectorWelcome language={language} onNavigate={handleNavigate} />
             </ScrollReveal>
           </>
@@ -159,7 +160,9 @@ export default function App() {
       </main>
 
       {/* 6. Rasmiy Footer */}
-      <Footer language={language} onNavigate={handleNavigate} />
+      <ScrollReveal animation="fade-up">
+        <Footer language={language} onNavigate={handleNavigate} />
+      </ScrollReveal>
     </div>
   );
 }

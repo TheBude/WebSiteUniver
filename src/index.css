@@ -28,12 +28,38 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+}
+
+header.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+:root.vision-mode header {
+  background-color: #000 !important;
+  border-bottom: 2px solid #ffeb3b !important;
+}
+
+:root.dark-mode header {
+  border-bottom-color: #334155;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
   color: var(--page-foreground);
   background:
     radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 35%),
@@ -42,6 +68,8 @@ body {
 
 .site-shell {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
   color: var(--page-foreground);
   background-color: var(--page-background);
 }
@@ -76,22 +104,63 @@ body {
 
 
 /* ========================================================
-   Scroll Reveal Animation (IntersectionObserver support)
+   Scroll Reveal Animation System (Smooth Entrance on Scroll)
    ======================================================== */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+}
+
+.scroll-reveal.reveal-fade-up {
+  transform: translateY(32px);
+}
+
+.scroll-reveal.reveal-fade-down {
+  transform: translateY(-32px);
+}
+
+.scroll-reveal.reveal-fade-left {
+  transform: translateX(-36px);
+}
+
+.scroll-reveal.reveal-fade-right {
+  transform: translateX(36px);
+}
+
+.scroll-reveal.reveal-zoom-in {
+  transform: scale(0.94) translateY(20px);
 }
 
 .scroll-reveal.is-visible {
   opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Stagger cascade children inside .reveal-cascade.is-visible */
+.scroll-reveal.reveal-cascade > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.reveal-cascade.is-visible > * {
+  opacity: 1;
   transform: translateY(0);
 }
 
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+.scroll-reveal.reveal-cascade.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal {
+  .scroll-reveal,
+  .scroll-reveal > * {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

@@ -375,6 +375,377 @@ export const samduMajorPages = {
       email: 'rector@samdu.uz',
     },
   },
+
+  'Stipendiyalar': {
+    id: 'talaba_stipendiyalar',
+    aliases: [
+      'stipendiyalar',
+      'talaba_stipendiyalar',
+      'talaba-stipendiyalar',
+      'talabalar_stipendiyalari',
+      'talabalar-stipendiyasi',
+      'stipendiya',
+      'scholarships',
+      'стипендии',
+    ],
+    category: {
+      uz: 'Talabalar ta’minoti',
+      qr: 'Studentler támiynatı',
+      ru: 'Студенческое обеспечение',
+      en: 'Student Support',
+    },
+    title: {
+      uz: 'Talabalar stipendiyalari',
+      qr: 'Studentler stipendiyaları',
+      ru: 'Стипендии студентов',
+      en: 'Student Scholarships',
+    },
+    image: 'https://www.samdu.uz/upload/images/685a00c356e09-685a00c356e0a-685a00c356e0b-685a00c356e0c.jpg',
+    lead: {
+      uz: 'Sharof Rashidov nomidagi Samarqand davlat universitetida stipendiya tayinlash o‘quv yilida ikki marotaba o‘tkaziladi va stipendiyalar yakuniy nazorat natijalariga asosan universitet rektorining buyrug‘i bilan tayinlanadi va to‘lanadi.',
+      qr: 'Sharof Rashidov atındaǵı Samarqand mámleketlik universitetinde stipendiya tayınlaw oqıw jılında eki mártebe ótkeriledi hám stipendiyalar juwmaqlawshı qadaǵalaw nátiyjelerine tiykarlanıp universitet rektorınıń buyrıǵı menen tayınlanadı hám tólenedi.',
+      ru: 'В Самаркандском государственном университете имени Шарофа Рашидова назначение стипендий проводится дважды в учебном году на основании результатов итогового контроля приказом ректора университета.',
+      en: 'At Samarkand State University named after Sharof Rashidov, scholarship appointment is conducted twice per academic year based on final assessment results by the rector\'s decree.',
+    },
+    paragraphs: {
+      uz: [
+        'Universitetda stipendiya tayinlash o‘quv yilida ikki marotaba o‘tkaziladi va stipendiyalar yakuniy nazorat natijalariga asosan universitet rektorining buyrug‘i bilan tayinlanadi va to‘lanadi.',
+        'Stipendiya to‘lovlari belgilangan muddatlarda har oyning dastlabki o‘n kunligida talabalarning shaxsiy bank plastik kartalariga to‘liq hajmda o‘tkazib beriladi.',
+      ],
+      qr: [
+        'Universitetinde stipendiya tayınlaw oqıw jılında eki mártebe ótkeriledi hám juwmaqlawshı qadaǵalaw nátiyjelerine muwapıq rektor buyrıǵı tiykarında tayınlanadı.',
+        'Stipendiya tólemleri hár aydıń dáslepki on kúnliginde studentlerdiń plastik kartalarına ótkerip beriledi.',
+      ],
+      ru: [
+        'Назначение стипендий в университете осуществляется дважды в учебном году и производится на основании результатов итогового контроля приказом ректора университета.',
+        'Выплата стипендий производится ежемесячно в первой декаде месяца на персональные банковские пластиковые карты студентов.',
+      ],
+      en: [
+        'Scholarships at the university are awarded twice per academic year upon the evaluation of semester final examinations through an official order by the university rector.',
+        'Scholarship disbursements are transferred in full each month during the first ten calendar days directly to students’ personal bank cards.',
+      ],
+    },
+    sections: {
+      uz: [
+        {
+          badge: '1-tartib',
+          title: 'Davlat granti asosida ta’lim olayotgan talabalar uchun',
+          description: 'Davlat granti asosida tahsil olayotgan talabalarga stipendiya tayinlash va to‘lash tartibi quyidagicha:',
+          items: [
+            'Uzrsiz sabablarga ko‘ra akademik qarzdor bo‘lgan (bir yoki undan ortiq fan bo‘yicha 55 foizdan kam reyting ko‘rsatkichiga ega bo‘lgan) talabalar keyingi o‘quv semestri oyining birinchi kunidan boshlab stipendiya olish huquqidan mahrum qilinadi.',
+            'Akademik qarzini belgilangan tartibda bartaraf etgan (tegishli fanlar bo‘yicha 55 va undan ortiq foiz to‘plagan) hamda fanlarni o‘zlashtirish ko‘rsatkichlarida «qoniqarli» baholari (71 balldan kam reyting) 30 foizdan kam bo‘lgan talabalarga stipendiya — qarzni bartaraf etish muddati tugaganidan keyingi oyning birinchi kunidan boshlab, keyingi semestrga qadar bazaviy miqdorda tayinlanadi.',
+          ],
+        },
+        {
+          badge: '2-tartib',
+          title: 'To‘lov-kontrakt asosida ta’lim olayotgan talabalar uchun',
+          description: 'Stipendiyali to‘lov-kontrakt asosida tahsil oluvchi talabalar uchun amaldagi qoidalar:',
+          items: [
+            'Stipendiyali to‘lov-kontrakt asosida ta’lim olayotgan talabalarga o‘quv semestri yakuni bo‘yicha fanlarni o‘zlashtirish ko‘rsatkichlaridan qat’i nazar (baholariga bog‘liq bo‘lmagan holda), bazaviy miqdordagi stipendiya to‘liq tayinlanadi va muntazam to‘lanadi.',
+            'Talaba xohishiga ko‘ra stipendiyasiz shakldagi to‘lov-kontrakt shartnomasini tanlash huquqiga ham ega bo‘ladi.',
+          ],
+        },
+      ],
+      qr: [
+        {
+          badge: '1-tártip',
+          title: 'Mámleketlik grant tiykarında tálim alıwshı studentler ushın',
+          description: 'Mámleketlik grant tiykarında oqıp atırǵan studentlerge stipendiya tayınlaw shártleri:',
+          items: [
+            'Sebepsiz jaǵdaylarǵa baylanıslı akademiyalıq qarzdarlıǵı bolǵan (bir yamasa bir neshe pánnen 55% ten kem reyting alǵan) studentler keyingi oqıw semestri ayınıń birinshi kúninen baslap stipendiya alıw huqıqınan ayırıladı.',
+            'Akademiyalıq qarzın belgilengen tártipte saplastırǵan (55% hám odan joqarı toplaǵan) hám «qánaatlandırarlı» bahaları 30% ten kem bolǵan studentlerge keyingi semestrge shekem tiykarǵı muǵdarda stipendiya tayınlanadı.',
+          ],
+        },
+        {
+          badge: '2-tártip',
+          title: 'Tólew-kontrakt tiykarında tálim alıwshı studentler ushın',
+          description: 'Kontrakt tiykarında tálim alıwshı studentlerge stipendiya tólew qáǵıydaları:',
+          items: [
+            'Stipendiyalı tólew-kontrakt tiykarında tálim alıp atırǵan studentlerge oqıw semestri juwmaǵı boyınsha pánlerdi ózlestiriw nátiyjelerinen qátiy názer, tiykarǵı muǵdardagı stipendiya tayınlanadı hám turaqlı tólenedi.',
+          ],
+        },
+      ],
+      ru: [
+        {
+          badge: 'Порядок 1',
+          title: 'Для студентов, обучающихся на основе государственного гранта',
+          description: 'Условия назначения и выплаты стипендий студентам государственного гранта:',
+          items: [
+            'Студенты, имеющие по неуважительным причинам академическую задолженность (рейтинговый показатель менее 55% по одному или нескольким предметам), лишаются права на получение стипендии с первого числа месяца следующего учебного семестра.',
+            'Студентам, ликвидировавшим академическую задолженность в установленном порядке (набравшим 55% и выше по соответствующим дисциплинам) и имеющим менее 30% оценок «удовлетворительно» (рейтинг менее 71 балла), стипендия назначается в базовом размере с первого числа месяца, следующего за окончанием срока ликвидации задолженности, до следующего семестра.',
+          ],
+        },
+        {
+          badge: 'Порядок 2',
+          title: 'Для студентов, обучающихся на платно-контрактной основе со стипендией',
+          description: 'Условия для студентов платно-контрактной формы обучения:',
+          items: [
+            'Студентам, обучающимся на платно-контрактной основе со стипендией, независимо от показателей успеваемости по итогам учебного семестра назначается и выплачивается стипендия в установленном базовом размере.',
+          ],
+        },
+      ],
+      en: [
+        {
+          badge: 'Rule 1',
+          title: 'For students studying on a state grant',
+          description: 'Rules for appointment and payment of state grant scholarships:',
+          items: [
+            'Students who have an academic deficiency without valid cause (a rating below 55% in one or more subjects) forfeit their entitlement to a scholarship starting from the first day of the following semester month.',
+            'Students who eliminate their academic deficiency within the prescribed period (scoring 55% or higher) and whose "satisfactory" marks (below 71 points) constitute less than 30% are awarded the base scholarship from the month following remediation until the next semester.',
+          ],
+        },
+        {
+          badge: 'Rule 2',
+          title: 'For tuition-contract students with scholarship option',
+          description: 'Terms for fee-paying contract students:',
+          items: [
+            'Students enrolled in tuition-contract programs with stipend eligibility receive the standard base scholarship regardless of their end-of-semester academic grades.',
+          ],
+        },
+      ],
+    },
+    table: {
+      title: {
+        uz: 'Samarqand davlat universitetida belgilangan amaldagi oylik stipendiya miqdorlari',
+        qr: 'Samarqand mámleketlik universitetinde belgilengen ámeldegi stipendiya muǵdarları',
+        ru: 'Действующие размеры ежемесячных стипендий в СамГУ',
+        en: 'Current Monthly Scholarship Amounts at Samarkand State University',
+      },
+      headers: {
+        uz: ['T/r', 'Status / Toifa', 'Oylik stipendiya miqdori', 'Tavsif va shartlar'],
+        qr: ['T/r', 'Status / Kategoriya', 'Aylıq muǵdarı', 'Belgilenıw tiykarı'],
+        ru: ['№', 'Статус / Категория', 'Размер стипендии', 'Основание назначения'],
+        en: ['No.', 'Status / Tier', 'Monthly Amount', 'Eligibility Basis'],
+      },
+      rows: {
+        uz: [
+          ['1', 'Bazaviy stipendiya', '517 880 so‘m', 'Davlat granti va stipendiyali to‘lov-kontrakt talabalari uchun standart miqdor'],
+          ['2', '“A’lochi” talabalar (+20%)', '621 456 so‘m', 'Fanlarni faqat a’lo (86–100 ball) baholarga o‘zlashtirgan talabalar uchun rag‘bat'],
+          ['3', '“Nogiron” talabalar (+50%)', '776 820 so‘m', 'I va II guruh nogironligi bo‘lgan talabalar uchun ijtimoiy kafolatlangan to‘lov'],
+          ['4', 'Stajor-tadqiqotchi', '5 497 800 so‘m', 'Universitet ilmiy bo‘linmalarining stajor-tadqiqotchi ilmiy xodimlari'],
+          ['5', 'Tayanch doktorantura (PhD)', '6 210 435 so‘m', 'Falsafa doktori (PhD) ilmiy darajasi izlanuvchilari uchun to‘lov'],
+          ['6', 'Doktorantura (DSc)', '7 934 850 so‘m', 'Fan doktori (DSc) ilmiy darajasi izlanuvchilari uchun davlat to‘lovi'],
+        ],
+        qr: [
+          ['1', 'Tiykarǵı stipendiya', '517 880 so‘m', 'Grant hám kontrakt studentleri ushın standart stavka'],
+          ['2', '«A’lo» studentler (+20%)', '621 456 so‘m', 'Barlıq pánlerdi a’loǵa ózlestirgen studentler ushın qosımsha'],
+          ['3', '«Mayıplıǵı bolǵan» studentler (+50%)', '776 820 so‘m', 'I hám II topar mayıplıǵı bolǵan studentler ushın sociallıq qosımsha'],
+          ['4', 'Stajor-izertlewshi', '5 497 800 so‘m', 'Universitet stajor-izertlewshileri ushın'],
+          ['5', 'Tayansh doktorantura (PhD)', '6 210 435 so‘m', 'Filosofiya doktorı (PhD) izertlewshileri ushın'],
+          ['6', 'Doktorantura (DSc)', '7 934 850 so‘m', 'Ilim doktorı (DSc) izertlewshileri ushın'],
+        ],
+        ru: [
+          ['1', 'Базовая стипендия', '517 880 сум', 'Стандартная ставка для студентов гранта и контракта'],
+          ['2', 'Стипендия «Отличник» (+20%)', '621 456 сум', 'Поощрительная выплата студентам со всеми оценками «отлично»'],
+          ['3', 'Студенты с инвалидностью (+50%)', '776 820 сум', 'Социальная надбавка для студентов с инвалидностью I и II групп'],
+          ['4', 'Стажер-исследователь', '5 497 800 сум', 'Для стажеров-исследователей научных подразделений СамГУ'],
+          ['5', 'Базовая докторантура (PhD)', '6 210 435 сум', 'Для исследователей базовой докторантуры на степень PhD'],
+          ['6', 'Докторантура (DSc)', '7 934 850 сум', 'Для докторантов на соискание степени доктора наук DSc'],
+        ],
+        en: [
+          ['1', 'Base Scholarship', '517,880 UZS', 'Standard monthly allowance for grant & contract students'],
+          ['2', 'Honors / Straight-A (+20%)', '621,456 UZS', 'Honors incentive for students with all excellent marks'],
+          ['3', 'Students with Disability (+50%)', '776,820 UZS', 'State guaranteed support for Group I & II disabled students'],
+          ['4', 'Trainee Researcher', '5,497,800 UZS', 'Academic staff in pre-doctoral training fellowships'],
+          ['5', 'Basic Doctoral Studies (PhD)', '6,210,435 UZS', 'Doctoral fellows pursuing PhD research'],
+          ['6', 'Doctoral Studies (DSc)', '7,934,850 UZS', 'Senior doctoral fellows pursuing DSc research'],
+        ],
+      },
+      note: {
+        uz: 'Eslatma: Universitet bazaviy hisob-kitoblariga asoslangan. O‘zbekiston Respublikasi Vazirlar Mahkamasining qarorlariga muvofiq, stipendiya miqdorlari mehnatga haq to‘lashning eng kam miqdori (MHTEKM) o‘zgarishi bilan mutanosib tarzda qayta indeksatsiyalanadi.',
+        qr: 'Eskertpe: Universitet tiykarǵı esap-kitaplarına tiykarlanǵan. Ózbekstan Respublikası Ministrler Kabineti qararlarına muwapıq ózgeriwi múmkin.',
+        ru: 'Примечание: Данные основаны на утвержденных нормативах СамГУ. Размеры стипендий индексируются в соответствии с решениями Кабинета Министров РУз.',
+        en: 'Note: Based on official SamSU calculation scales. Scholarship rates are subject to indexation in accordance with decrees of the Cabinet of Ministers.',
+      },
+    },
+    hasCalculator: true,
+    callout: {
+      type: 'info',
+      title: {
+        uz: 'Stipendiya to‘lovlari va bank kartalari to‘g‘risida',
+        qr: 'Stipendiya tólemleri hám bank kartaları haqqında',
+        ru: 'О выплатах стипендий и банковских картах',
+        en: 'Information on Scholarship Disbursements and Bank Cards',
+      },
+      text: {
+        uz: 'Barcha stipendiyalar universitet rektorining rasmiy buyrug‘i e’lon qilingach, har oyning 5–10 sanalarida talabalarning shaxsiy bank plastik kartalariga to‘liq hajmda o‘tkazib beriladi. Savollar yuzasidan fakultet dekanati hamda SamDU Buxgalteriyasiga murojaat qilishingiz mumkin.',
+        qr: 'Barlıq stipendiyalar rektor buyrıǵı shıqqannan soń, hár aydıń 5–10 kúnlerinde studentlerdiń plastik kartalarına ótkerip beriledi.',
+        ru: 'Все стипендии перечисляются на банковские пластиковые карты студентов ежемесячно с 5 по 10 число. По всем вопросам обращайтесь в деканат и бухгалтерию СамГУ.',
+        en: 'All stipends are credited to students\' personal bank payment cards between the 5th and 10th of each month upon issuance of the rector\'s decree.',
+      },
+    },
+    cardsTitle: {
+      uz: 'Davlat nomli nufuzli stipendiyalari',
+      qr: 'Mámleketlik atamalı abıraylı stipendiyaları',
+      ru: 'Престижные государственные именные стипендии',
+      en: 'Prestigious State Named Scholarships',
+    },
+    cards: {
+      uz: [
+        {
+          title: 'O‘zbekiston Respublikasi Prezidenti davlat stipendiyasi',
+          description: 'O‘quv va ilmiy faoliyatda eng yuqori natijalarga erishgan bakalavriat va magistratura iqtidorli talabalari uchun oliy darajadagi davlat mukofoti.',
+          tag: 'Oliy daraja',
+        },
+        {
+          title: 'Alisher Navoiy nomli davlat stipendiyasi',
+          description: 'Gumanitar fanlar, o‘zbek tili va adabiyoti, jurnalistika hamda san’atshunoslik yo‘nalishlarida yuqori natija ko‘rsatgan talabalarga beriladi.',
+          tag: 'Gumanitar fanlar',
+        },
+        {
+          title: 'Abu Rayhon Beruniy nomli davlat stipendiyasi',
+          description: 'Aniq va tabiiy fanlar, fizika, kimyo, biologiya va geografiya sohasida chuqur ilmiy izlanish olib borayotgan iqtidorli talabalar uchun.',
+          tag: 'Tabiiy fanlar',
+        },
+        {
+          title: 'Mirzo Ulug‘bek nomli davlat stipendiyasi',
+          description: 'Matematika, axborot texnologiyalari, mexanika, muhandislik fizikasi va astronomiya yo‘nalishlari talabalari uchun.',
+          tag: 'IT va Muhandislik',
+        },
+        {
+          title: 'Islom Karimov nomli davlat stipendiyasi',
+          description: 'Ijtimoiy-siyosiy fanlar, iqtisodiyot, tarix va huquqshunoslik yo‘nalishlarida tahsil olayotgan yosh tadqiqotchi talabalarga beriladi.',
+          tag: 'Ijtimoiy fanlar',
+        },
+        {
+          title: 'Xalqaro grantlar va stipendiya dasturlari',
+          description: 'Erasmus+, DAAD, IAEA, TIES, "El-yurt umidi" jamg‘armasi stipendiyalari va xalqaro tadqiqot loyihalari tanlovlari.',
+          tag: 'Xalqaro grantlar',
+        },
+      ],
+      qr: [
+        {
+          title: 'Ózbekstan Respublikası Prezidenti mámleketlik stipendiyası',
+          description: 'Oqıw hám ilimiy iskerlikte eń joqarı nátiyjelerge erisken studentler ushın joqarı dárejedegi mámleketlik sıylıq.',
+          tag: 'Joqarı dáreje',
+        },
+        {
+          title: 'Áliyisher Nawayı atındaǵı mámleketlik stipendiya',
+          description: 'Gumanitar pánler, qaraqalpaq hám ózbek tili, ádebiyatı boyınsha ayırıqsha kózge túsken studentlerge beriledi.',
+          tag: 'Gumanitar',
+        },
+        {
+          title: 'Abu Rayxan Beruniy atındaǵı mámleketlik stipendiya',
+          description: 'Anıq hám tábiyiy pánler tarawında teren ilimiy izertlew alıp barıp atırǵan talantlı studentler ushın.',
+          tag: 'Tábiyiy pánler',
+        },
+        {
+          title: 'Mirzo Uluǵbek atındaǵı mámleketlik stipendiya',
+          description: 'Matematika, xabar texnologiyaları hám fizika baǵdarları studentleri ushın.',
+          tag: 'IT hám Texnika',
+        },
+        {
+          title: 'Islam Kárimov atındaǵı mámleketlik stipendiya',
+          description: 'Sociallıq-siyasiy pánler, ekonomika hám yuridika baǵdarları studentleri ushın.',
+          tag: 'Sociallıq-ekonomika',
+        },
+        {
+          title: 'Xalıqaralıq grantlar hám almasıw baǵdarlamaları',
+          description: 'Erasmus+, DAAD, «El-yurt úmiti» fondı stipendiyaları hám xalıqaralıq joybarlar.',
+          tag: 'Xalıqaralıq',
+        },
+      ],
+      ru: [
+        {
+          title: 'Государственная стипендия Президента Республики Узбекистан',
+          description: 'Высшая государственная награда для наиболее одаренных студентов бакалавриата и магистратуры СамГУ.',
+          tag: 'Высшая награда',
+        },
+        {
+          title: 'Государственная стипендия имени Алишера Навои',
+          description: 'Назначается студентам гуманитарных направлений, узбекского языка, литературы и востоковедения.',
+          tag: 'Гуманитарные',
+        },
+        {
+          title: 'Государственная стипендия имени Абу Райхана Беруни',
+          description: 'Присуждается студентам точных и естественных наук — физики, химии, биологии и экологии.',
+          tag: 'Естественные науки',
+        },
+        {
+          title: 'Государственная стипендия имени Мирзо Улугбека',
+          description: 'Для талантливых студентов математики, прикладной информатики, инженерии и астрономии.',
+          tag: 'IT и Инженерия',
+        },
+        {
+          title: 'Государственная стипендия имени Ислама Каримова',
+          description: 'Для отличившихся студентов социально-политических, исторических, экономических и юридических наук.',
+          tag: 'Общественные',
+        },
+        {
+          title: 'Международные гранты и академическая мобильность',
+          description: 'Программы Erasmus+, стипендии DAAD, IAEA, фонда «Эл-юрт умиди» и международные научные проекты СамГУ.',
+          tag: 'Международные',
+        },
+      ],
+      en: [
+        {
+          title: 'State Scholarship of the President of Uzbekistan',
+          description: 'The highest prestigious national academic honor for undergraduate and graduate students with outstanding merits.',
+          tag: 'Highest Honor',
+        },
+        {
+          title: 'Alisher Navoiy State Named Scholarship',
+          description: 'Awarded to top-performing students in the humanities, Uzbek literature, linguistics, and oriental studies.',
+          tag: 'Humanities',
+        },
+        {
+          title: 'Abu Rayhon Beruni State Named Scholarship',
+          description: 'Awarded to gifted students conducting research in the exact and natural sciences, physics, and biochemistry.',
+          tag: 'Natural Sciences',
+        },
+        {
+          title: 'Mirzo Ulugh Beg State Named Scholarship',
+          description: 'Established for exceptional students in mathematics, computer engineering, astronomy, and digital technologies.',
+          tag: 'IT & Engineering',
+        },
+        {
+          title: 'Islam Karimov State Named Scholarship',
+          description: 'Recognizes outstanding students majoring in social-political sciences, jurisprudence, history, and economics.',
+          tag: 'Social Sciences',
+        },
+        {
+          title: 'International Grants & Mobility Programs',
+          description: 'Erasmus+ exchange grants, DAAD scholarships, IAEA fellowships, and the "El-Yurt Umidi" Foundation funds.',
+          tag: 'International',
+        },
+      ],
+    },
+    facts: [
+      {
+        label: { uz: 'Bazaviy stipendiya', qr: 'Tiykarǵı stipendiya', ru: 'Базовая стипендия', en: 'Base Stipend' },
+        value: { uz: '517 880 so‘m/oy', qr: '517 880 so‘m/ay', ru: '517 880 сум/мес.', en: '517,880 UZS/mo.' },
+      },
+      {
+        label: { uz: '“A’lochi” talaba (+20%)', qr: '«A’lo» student (+20%)', ru: '«Отличник» (+20%)', en: 'Honors (+20%)' },
+        value: { uz: '621 456 so‘m/oy', qr: '621 456 so‘m/ay', ru: '621 456 сум/мес.', en: '621,456 UZS/mo.' },
+      },
+      {
+        label: { uz: 'Ijtimoiy ustama (+50%)', qr: 'Sociallıq qosımsha (+50%)', ru: 'Инвалидность (+50%)', en: 'Disability (+50%)' },
+        value: { uz: '776 820 so‘m/oy', qr: '776 820 so‘m/ay', ru: '776 820 сум/мес.', en: '776,820 UZS/mo.' },
+      },
+      {
+        label: { uz: 'Tayanch doktorantura (PhD)', qr: 'Tayansh doktorantura', ru: 'Базовая докторантура', en: 'PhD Fellow' },
+        value: { uz: '6 210 435 so‘m/oy', qr: '6 210 435 so‘m/ay', ru: '6 210 435 сум/мес.', en: '6,210,435 UZS/mo.' },
+      },
+      {
+        label: { uz: 'Doktorantura (DSc)', qr: 'Doktorantura (DSc)', ru: 'Докторантура (DSc)', en: 'DSc Fellow' },
+        value: { uz: '7 934 850 so‘m/oy', qr: '7 934 850 so‘m/ay', ru: '7 934 850 сум/мес.', en: '7,934,850 UZS/mo.' },
+      },
+      {
+        label: { uz: 'Tayinlash davriyligi', qr: 'Tayınlaw dáwiri', ru: 'Периодичность', en: 'Frequency' },
+        value: { uz: 'Yilda 2 marta (har semestrda)', qr: 'Jılına 2 mártebe', ru: '2 раза в год (посеместрово)', en: 'Twice a year (semester basis)' },
+      },
+      {
+        label: { uz: 'To‘lov shakli', qr: 'Tólew túri', ru: 'Форма выплаты', en: 'Payment Method' },
+        value: { uz: 'Bank plastik kartasiga', qr: 'Bank plastik kartasına', ru: 'На банковскую карту', en: 'Direct Bank Card Deposit' },
+      },
+    ],
+    contact: {
+      address: '140104, Samarqand shahri, Universitet xiyoboni, 15-uy (Bosh bino, Buxgalteriya bo‘limi)',
+      phone: '+998 (66) 240-38-40',
+      email: 'buxgalteriya@samdu.uz, devonxona@samdu.uz',
+    },
+  },
 };
 
 export function getSamduPageContent(slugOrLabel, language = 'uz') {
@@ -383,7 +754,11 @@ export function getSamduPageContent(slugOrLabel, language = 'uz') {
   const cleanQuery = decodeURIComponent(slugOrLabel).replace(/^#/, '').trim();
 
   for (const [key, page] of Object.entries(samduMajorPages)) {
-    if (key.toLowerCase() === cleanQuery.toLowerCase() || page.id === cleanQuery.toLowerCase()) {
+    const isKeyMatch = key.toLowerCase() === cleanQuery.toLowerCase();
+    const isIdMatch = page.id && page.id.toLowerCase() === cleanQuery.toLowerCase();
+    const isAliasMatch = page.aliases && page.aliases.some((a) => a.toLowerCase() === cleanQuery.toLowerCase());
+
+    if (isKeyMatch || isIdMatch || isAliasMatch) {
       return formatPage(page, language, key);
     }
   }
@@ -405,6 +780,22 @@ function formatPage(page, lang, rawKey) {
     })),
     contact: page.contact,
     rawKey,
+    sections: page.sections ? (page.sections[lang] || page.sections.uz) : undefined,
+    table: page.table ? {
+      title: page.table.title ? (page.table.title[lang] || page.table.title.uz) : undefined,
+      headers: page.table.headers ? (page.table.headers[lang] || page.table.headers.uz) : undefined,
+      rows: page.table.rows ? (page.table.rows[lang] || page.table.rows.uz) : undefined,
+      note: page.table.note ? (page.table.note[lang] || page.table.note.uz) : undefined,
+    } : undefined,
+    hasCalculator: Boolean(page.hasCalculator),
+    callout: page.callout ? {
+      type: page.callout.type || 'info',
+      title: page.callout.title ? (page.callout.title[lang] || page.callout.title.uz) : undefined,
+      text: page.callout.text ? (page.callout.text[lang] || page.callout.text.uz) : undefined,
+    } : undefined,
+    cardsTitle: page.cardsTitle ? (page.cardsTitle[lang] || page.cardsTitle.uz) : undefined,
+    cards: page.cards ? (page.cards[lang] || page.cards.uz) : undefined,
+    faq: page.faq ? (page.faq[lang] || page.faq.uz) : undefined,
   };
 }
 

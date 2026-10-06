@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from '../i18n';
 import { getSamduPageContent } from '../data/samduPagesData';
+import ScholarshipCalculator from './ScholarshipCalculator';
 import './InnerPage.css';
 
 export default function InnerPage({ pageIdentifier, language = 'uz', onBack, onNavigate }) {
@@ -108,9 +109,146 @@ export default function InnerPage({ pageIdentifier, language = 'uz', onBack, onN
 
       <div className="samdu-page-content-grid">
         <div className="samdu-page-main-text">
+          {page.callout && (
+            <div className={`samdu-callout-banner samdu-callout-${page.callout.type || 'info'}`}>
+              <div className="samdu-callout-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+              </div>
+              <div className="samdu-callout-content">
+                {page.callout.title && <strong className="samdu-callout-title">{page.callout.title}</strong>}
+                {page.callout.text && <p className="samdu-callout-text">{page.callout.text}</p>}
+              </div>
+            </div>
+          )}
+
           {page.paragraphs && page.paragraphs.map((p, idx) => (
             <p key={idx} className="samdu-page-paragraph">{p}</p>
           ))}
+
+          {page.table && (
+            <div className="samdu-inner-table-wrap">
+              {page.table.title && (
+                <h3 className="samdu-section-heading">
+                  <svg className="samdu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+                  </svg>
+                  <span>{page.table.title}</span>
+                </h3>
+              )}
+              <div className="samdu-table-responsive">
+                <table className="samdu-data-table">
+                  <thead>
+                    <tr>
+                      {page.table.headers.map((th, i) => (
+                        <th key={i}>{th}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {page.table.rows.map((row, rIdx) => (
+                      <tr key={rIdx}>
+                        {row.map((cell, cIdx) => (
+                          <td
+                            key={cIdx}
+                            className={
+                              cIdx === 2
+                                ? 'samdu-table-amount-cell'
+                                : cIdx === 1
+                                ? 'samdu-table-bold-cell'
+                                : cIdx === 0
+                                ? 'samdu-table-idx-cell'
+                                : ''
+                            }
+                          >
+                            {cIdx === 2 ? (
+                              <span className="samdu-amount-badge">{cell}</span>
+                            ) : (
+                              cell
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {page.table.note && (
+                <div className="samdu-table-note">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                  </svg>
+                  <span>{page.table.note}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {page.hasCalculator && (
+            <ScholarshipCalculator language={language} />
+          )}
+
+          {page.sections && page.sections.length > 0 && (
+            <div className="samdu-inner-sections-list">
+              {page.sections.map((sec, idx) => (
+                <div key={idx} className="samdu-inner-section-card">
+                  <div className="samdu-section-card-header">
+                    {sec.badge && <span className="samdu-section-badge">{sec.badge}</span>}
+                    <h4 className="samdu-section-card-title">{sec.title}</h4>
+                  </div>
+                  {sec.description && (
+                    <p className="samdu-section-card-desc">{sec.description}</p>
+                  )}
+                  {sec.items && sec.items.length > 0 && (
+                    <ul className="samdu-section-checklist">
+                      {sec.items.map((item, itemIdx) => (
+                        <li key={itemIdx} className="samdu-section-checkitem">
+                          <span className="samdu-check-icon-wrap">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {page.cards && page.cards.length > 0 && (
+            <div className="samdu-inner-cards-section">
+              {page.cardsTitle && (
+                <h3 className="samdu-section-heading">
+                  <svg className="samdu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <span>{page.cardsTitle}</span>
+                </h3>
+              )}
+              <div className="samdu-inner-cards-grid">
+                {page.cards.map((card, idx) => (
+                  <div key={idx} className="samdu-content-card">
+                    {card.tag && (
+                      <div className="samdu-card-top">
+                        <span className="samdu-card-tag">{card.tag}</span>
+                      </div>
+                    )}
+                    <h4 className="samdu-card-title">{card.title}</h4>
+                    <p className="samdu-card-desc">{card.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="samdu-page-footer-actions">
             <button

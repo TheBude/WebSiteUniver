@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function ScrollReveal({ children, className = '', threshold = 0.12 }) {
+export default function ScrollReveal({
+  children,
+  className = '',
+  animation = 'fade-up',
+  delay = 0,
+  threshold = 0.08,
+  cascade = false,
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
 
@@ -31,10 +38,20 @@ export default function ScrollReveal({ children, className = '', threshold = 0.1
     };
   }, [threshold]);
 
-  const classes = ['scroll-reveal', isVisible ? 'is-visible' : '', className].filter(Boolean).join(' ');
+  const classes = [
+    'scroll-reveal',
+    `reveal-${animation}`,
+    isVisible ? 'is-visible' : '',
+    cascade ? 'reveal-cascade' : '',
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const style = delay ? { transitionDelay: `${delay}ms` } : undefined;
 
   return (
-    <div ref={elementRef} className={classes}>
+    <div ref={elementRef} className={classes} style={style}>
       {children}
     </div>
   );

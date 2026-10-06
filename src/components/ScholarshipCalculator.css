@@ -1,0 +1,472 @@
+
+.samdu-calculator-box {
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 28px 0;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05);
+}
+
+:root.dark-mode .samdu-calculator-box {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-color: #334155;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+:root.vision-mode .samdu-calculator-box {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-calc-header {
+  margin-bottom: 20px;
+}
+
+.samdu-calc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.samdu-calc-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+:root.dark-mode .samdu-calc-badge {
+  background: #3b82f6;
+}
+
+:root.vision-mode .samdu-calc-badge {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-calc-subtitle {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+:root.dark-mode .samdu-calc-subtitle {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-calc-subtitle {
+  color: #fff;
+}
+
+.samdu-calc-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .samdu-calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.samdu-calc-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.samdu-calc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.samdu-calc-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+:root.dark-mode .samdu-calc-label {
+  color: #cbd5e1;
+}
+
+:root.vision-mode .samdu-calc-label {
+  color: #ffeb3b;
+}
+
+.samdu-calc-tier-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.samdu-calc-tier-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.samdu-calc-tier-btn:hover {
+  border-color: #93c5fd;
+  background: #f0f7ff;
+}
+
+.samdu-calc-tier-btn.is-selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+:root.dark-mode .samdu-calc-tier-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+:root.dark-mode .samdu-calc-tier-btn:hover {
+  background: #253347;
+  border-color: #60a5fa;
+}
+
+:root.dark-mode .samdu-calc-tier-btn.is-selected {
+  background: #1d3356;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+:root.vision-mode .samdu-calc-tier-btn {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
+:root.vision-mode .samdu-calc-tier-btn.is-selected {
+  border-color: #ffeb3b;
+  background: #222;
+  color: #ffeb3b;
+}
+
+.samdu-tier-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+:root.dark-mode .samdu-tier-name {
+  color: #f1f5f9;
+}
+
+:root.vision-mode .samdu-tier-name {
+  color: inherit;
+}
+
+.samdu-tier-sum {
+  font-size: 13px;
+  font-weight: 750;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+:root.dark-mode .samdu-tier-sum {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-tier-sum {
+  color: #ffeb3b;
+}
+
+.samdu-calc-period-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .samdu-calc-period-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.samdu-period-btn {
+  padding: 9px 12px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.samdu-period-btn:hover {
+  border-color: #93c5fd;
+  background: #f0f7ff;
+}
+
+.samdu-period-btn.is-selected {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+:root.dark-mode .samdu-period-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+:root.dark-mode .samdu-period-btn:hover {
+  background: #253347;
+}
+
+:root.dark-mode .samdu-period-btn.is-selected {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-period-btn {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
+:root.vision-mode .samdu-period-btn.is-selected {
+  background: #ffeb3b;
+  border-color: #ffeb3b;
+  color: #000;
+}
+
+.samdu-calc-result-card {
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.15);
+}
+
+:root.dark-mode .samdu-calc-result-card {
+  background: #1e293b;
+  border-color: #3b82f6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+:root.vision-mode .samdu-calc-result-card {
+  background: #000;
+  border-color: #ffeb3b;
+}
+
+.samdu-calc-result-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.samdu-calc-res-tag {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 750;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+:root.dark-mode .samdu-calc-res-tag {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+:root.vision-mode .samdu-calc-res-tag {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-calc-res-label {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+:root.dark-mode .samdu-calc-res-label {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-calc-res-label {
+  color: #eee;
+}
+
+.samdu-calc-huge-amount {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 850;
+  color: #1e293b;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+:root.dark-mode .samdu-calc-huge-amount {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-calc-huge-amount {
+  color: #ffeb3b;
+}
+
+.samdu-calc-monthly-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+:root.dark-mode .samdu-calc-monthly-note {
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+:root.vision-mode .samdu-calc-monthly-note {
+  background: #222;
+  color: #fff;
+}
+
+.samdu-calc-monthly-note strong {
+  color: #0f172a;
+}
+
+:root.dark-mode .samdu-calc-monthly-note strong {
+  color: #f1f5f9;
+}
+
+:root.vision-mode .samdu-calc-monthly-note strong {
+  color: #ffeb3b;
+}
+
+.samdu-calc-tier-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #64748b;
+  padding: 6px 0;
+  border-top: 1px dashed #e2e8f0;
+}
+
+:root.dark-mode .samdu-calc-tier-desc {
+  color: #94a3b8;
+  border-top-color: #334155;
+}
+
+:root.vision-mode .samdu-calc-tier-desc {
+  color: #fff;
+  border-top-color: #ffeb3b;
+}
+
+.samdu-calc-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.samdu-calc-copy-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.samdu-calc-copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+:root.dark-mode .samdu-calc-copy-btn {
+  background: #3b82f6;
+}
+
+:root.dark-mode .samdu-calc-copy-btn:hover {
+  background: #2563eb;
+}
+
+:root.vision-mode .samdu-calc-copy-btn {
+  background: #ffeb3b;
+  color: #000;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .samdu-calculator-box {
+    padding: 16px 12px;
+    border-radius: 12px;
+    margin: 20px 0;
+  }
+  .samdu-calc-badge {
+    font-size: 11.5px;
+    padding: 4px 10px;
+  }
+  .samdu-calc-subtitle {
+    font-size: 13px;
+  }
+  .samdu-calc-tier-btn {
+    padding: 8px 10px;
+  }
+  .samdu-tier-name {
+    font-size: 12.5px;
+  }
+  .samdu-tier-sum {
+    font-size: 12px;
+  }
+  .samdu-calc-period-options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .samdu-calc-period-btn {
+    padding: 7px 6px;
+    font-size: 12px;
+  }
+  .samdu-calc-result-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+  .samdu-result-sum-number {
+    font-size: 22px;
+  }
+}
