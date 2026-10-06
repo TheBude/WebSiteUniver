@@ -261,6 +261,8 @@
 
   .samdu-service-title {
     font-size: 13.5px;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .samdu-dot {

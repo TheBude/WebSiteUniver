@@ -177,8 +177,8 @@ export default function Sidebar({ isOpen, onClose, onOpen, language, onLanguageC
       <aside
         className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col overflow-hidden border-r border-blue-900/40 bg-[#161f3e] text-slate-100 shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen
-            ? 'w-72 sm:w-80 translate-x-0 shadow-[12px_0_40px_rgba(15,23,42,0.7)]'
-            : '-translate-x-full md:translate-x-0 w-72 md:w-16 shadow-none md:shadow-xl'
+            ? 'w-72 sm:w-80 max-w-[85vw] translate-x-0 shadow-[12px_0_40px_rgba(15,23,42,0.7)]'
+            : '-translate-x-full md:translate-x-0 w-72 md:w-16 max-w-[85vw] md:max-w-none shadow-none md:shadow-xl'
         }`}
       >
         <div className={`flex h-[73px] shrink-0 items-center border-b border-white/10 bg-[#121a35] ${isOpen ? 'justify-between px-6' : 'justify-center px-2'}`}>

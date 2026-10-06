@@ -209,6 +209,10 @@
     font-size: clamp(14px, 4.2vw, 18px);
     line-height: 1.25;
   }
+  .home-carousel__nav-zone {
+    width: 44px;
+    min-width: 44px;
+  }
   .home-carousel__arrow-btn {
     opacity: 0.85;
     width: 32px;
@@ -216,10 +220,10 @@
     font-size: 14px;
   }
   .home-carousel__nav-zone--left {
-    padding-left: 8px;
+    padding-left: 6px;
   }
   .home-carousel__nav-zone--right {
-    padding-right: 8px;
+    padding-right: 6px;
   }
   .home-carousel__dot {
     width: 6px;

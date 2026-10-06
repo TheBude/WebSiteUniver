@@ -74,7 +74,7 @@ export default function HeaderBanner({
                         </span>
                     </div>
                     
-                    <div className="flex min-w-0 flex-col text-left font-sans">
+                    <div className="flex min-w-0 flex-1 flex-col text-left font-sans">
                         <span className="break-words text-[10px] sm:text-sm font-black leading-tight tracking-wide text-slate-100 uppercase group-hover:text-blue-200 transition-colors">
                             {t('SHAROF RASHIDOV NOMIDAGI')}
                         </span>

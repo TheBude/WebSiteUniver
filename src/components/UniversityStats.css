@@ -286,15 +286,20 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  .samdu-stat-card {
-    padding: 16px 14px;
-    border-radius: 14px;
+  .samdu-stats-title-wrap {
+    gap: 10px;
+  }
+  .samdu-stat-top {
+    gap: 8px;
+    flex-wrap: wrap;
   }
   .samdu-stat-number {
-    font-size: 25px;
+    font-size: 24px;
+    word-break: break-word;
   }
   .samdu-stat-label {
     font-size: 14.5px;
+    word-break: break-word;
   }
   .samdu-stat-sub {
     font-size: 12px;
