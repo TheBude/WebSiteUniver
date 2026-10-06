@@ -1,0 +1,951 @@
+/* ========================================================
+   SamDU News Page (Yangiliklar bo'limi) Styles
+   ======================================================== */
+
+.samdu-news-page {
+  width: 100%;
+  animation: newsFadeIn 0.35s ease-out both;
+}
+
+@keyframes newsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Box */
+.samdu-news-header-box {
+  margin-bottom: 28px;
+}
+
+.samdu-news-page-title {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+:root.dark-mode .samdu-news-page-title {
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-news-page-title {
+  color: #ffffff;
+}
+
+.samdu-news-page-subtitle {
+  margin: 0;
+  font-size: 15.5px;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+:root.dark-mode .samdu-news-page-subtitle {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-news-page-subtitle {
+  color: #eeeeee;
+}
+
+/* Filter and Search Bar */
+.samdu-news-filter-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+:root.dark-mode .samdu-news-filter-panel {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+:root.vision-mode .samdu-news-filter-panel {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-news-search-wrap {
+  position: relative;
+  flex: 1 1 260px;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.samdu-search-icon {
+  position: absolute;
+  left: 12px;
+  width: 17px;
+  height: 17px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.samdu-news-search-input {
+  width: 100%;
+  height: 42px;
+  padding: 8px 36px 8px 38px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.samdu-news-search-input:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+:root.dark-mode .samdu-news-search-input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+:root.dark-mode .samdu-news-search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+:root.vision-mode .samdu-news-search-input {
+  background: #000;
+  border: 2px solid #ffeb3b;
+  color: #fff;
+}
+
+.samdu-clear-search-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.samdu-news-categories-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 2 1 340px;
+}
+
+.samdu-news-cat-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.samdu-news-cat-btn:hover {
+  background: #edf2f7;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.samdu-news-cat-btn.is-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+:root.dark-mode .samdu-news-cat-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+:root.dark-mode .samdu-news-cat-btn:hover {
+  background: #253347;
+  color: #fff;
+}
+
+:root.dark-mode .samdu-news-cat-btn.is-active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-news-cat-btn {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
+:root.vision-mode .samdu-news-cat-btn.is-active {
+  background: #ffeb3b;
+  border-color: #ffeb3b;
+  color: #000;
+  font-weight: 800;
+}
+
+.samdu-news-count-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #eff6ff;
+  border-radius: 8px;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+:root.dark-mode .samdu-news-count-badge {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+:root.vision-mode .samdu-news-count-badge {
+  background: #ffeb3b;
+  color: #000;
+}
+
+/* ========================================================
+   Hero Featured Card (Eng Muhim Yangilik)
+   ======================================================== */
+.samdu-news-featured-hero {
+  margin-bottom: 36px;
+}
+
+.samdu-hero-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.samdu-hero-card:hover {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: 0 16px 36px -4px rgba(37, 99, 235, 0.16);
+}
+
+:root.dark-mode .samdu-hero-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+:root.dark-mode .samdu-hero-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+:root.vision-mode .samdu-hero-card {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-hero-media {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.samdu-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.samdu-hero-card:hover .samdu-hero-img {
+  transform: scale(1.04);
+}
+
+.samdu-hero-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(37, 99, 235, 0.92);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 750;
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+:root.vision-mode .samdu-hero-badge {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-hero-info {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.samdu-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #64748b;
+  font-size: 12.5px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+:root.dark-mode .samdu-card-meta {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-card-meta {
+  color: #ccc;
+}
+
+.samdu-meta-tag,
+.samdu-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.samdu-meta-tag svg,
+.samdu-meta-item svg {
+  width: 14px;
+  height: 14px;
+}
+
+.samdu-hero-title {
+  margin: 0 0 14px;
+  font-size: clamp(19px, 2.2vw, 25px);
+  font-weight: 800;
+  line-height: 1.35;
+  color: #0f172a;
+  transition: color 0.2s ease;
+}
+
+.samdu-hero-card:hover .samdu-hero-title {
+  color: #2563eb;
+}
+
+:root.dark-mode .samdu-hero-title {
+  color: #f8fafc;
+}
+
+:root.dark-mode .samdu-hero-card:hover .samdu-hero-title {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-hero-title {
+  color: #fff;
+}
+
+.samdu-hero-desc {
+  margin: 0 0 20px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #475569;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+:root.dark-mode .samdu-hero-desc {
+  color: #cbd5e1;
+}
+
+:root.vision-mode .samdu-hero-desc {
+  color: #eee;
+}
+
+.samdu-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: auto;
+}
+
+.samdu-hero-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.samdu-hero-card:hover .samdu-hero-cta svg {
+  transform: translateX(4px);
+}
+
+:root.dark-mode .samdu-hero-cta {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-hero-cta {
+  color: #ffeb3b;
+}
+
+/* ========================================================
+   Cards Grid (Yangiliklar paneli)
+   ======================================================== */
+.samdu-news-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.samdu-news-modern-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.samdu-news-modern-card:hover {
+  transform: translateY(-5px);
+  border-color: #93c5fd;
+  box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.12);
+}
+
+:root.dark-mode .samdu-news-modern-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+:root.dark-mode .samdu-news-modern-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+:root.vision-mode .samdu-news-modern-card {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-card-img-box {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.samdu-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.samdu-news-modern-card:hover .samdu-card-thumb {
+  transform: scale(1.06);
+}
+
+.samdu-card-category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 750;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+:root.vision-mode .samdu-card-category-badge {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.samdu-card-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.4;
+  color: #0f172a;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.samdu-news-modern-card:hover .samdu-card-title {
+  color: #2563eb;
+}
+
+:root.dark-mode .samdu-card-title {
+  color: #f8fafc;
+}
+
+:root.dark-mode .samdu-news-modern-card:hover .samdu-card-title {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-card-title {
+  color: #fff;
+}
+
+.samdu-card-excerpt {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #64748b;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+:root.dark-mode .samdu-card-excerpt {
+  color: #94a3b8;
+}
+
+:root.vision-mode .samdu-card-excerpt {
+  color: #ccc;
+}
+
+.samdu-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+:root.dark-mode .samdu-card-footer {
+  border-top-color: #334155;
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-card-footer {
+  border-top-color: #ffeb3b;
+  color: #ffeb3b;
+}
+
+.samdu-card-footer svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.samdu-news-modern-card:hover .samdu-card-footer svg {
+  transform: translateX(4px);
+}
+
+/* Empty State */
+.samdu-news-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+}
+
+.samdu-news-empty-state svg {
+  width: 48px;
+  height: 48px;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.samdu-news-empty-state h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.samdu-news-empty-state p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.samdu-btn-reset-filter {
+  padding: 8px 18px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Source Notice */
+.samdu-news-source-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 30px;
+}
+
+.samdu-news-source-notice svg {
+  width: 20px;
+  height: 20px;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.samdu-news-source-notice a {
+  color: #2563eb;
+  font-weight: 650;
+  text-decoration: underline;
+}
+
+:root.dark-mode .samdu-news-source-notice {
+  background: #0f172a;
+  color: #94a3b8;
+}
+
+:root.dark-mode .samdu-news-source-notice a {
+  color: #60a5fa;
+}
+
+:root.vision-mode .samdu-news-source-notice {
+  background: #000;
+  border: 2px solid #ffeb3b;
+  color: #fff;
+}
+
+/* ========================================================
+   Article Detail Modal (O'qish oynasi)
+   ======================================================== */
+.samdu-news-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalOverlayIn 0.25s ease-out both;
+}
+
+@keyframes modalOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.samdu-news-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow-y: auto;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4);
+  animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+:root.dark-mode .samdu-news-modal-content {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-news-modal-content {
+  background: #000;
+  border: 2px solid #ffeb3b;
+}
+
+.samdu-news-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.samdu-news-modal-close:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.samdu-news-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.samdu-modal-media {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #0f172a;
+}
+
+.samdu-modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.samdu-modal-category {
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.samdu-modal-body {
+  padding: 24px 28px;
+}
+
+.samdu-modal-title {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+:root.dark-mode .samdu-modal-title {
+  color: #f8fafc;
+}
+
+:root.vision-mode .samdu-modal-title {
+  color: #fff;
+}
+
+.samdu-modal-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #334155;
+  margin-bottom: 24px;
+}
+
+.samdu-modal-text p {
+  margin: 0 0 14px;
+}
+
+:root.dark-mode .samdu-modal-text {
+  color: #cbd5e1;
+}
+
+:root.vision-mode .samdu-modal-text {
+  color: #eee;
+}
+
+.samdu-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+:root.dark-mode .samdu-modal-actions {
+  border-top-color: #334155;
+}
+
+:root.vision-mode .samdu-modal-actions {
+  border-top-color: #ffeb3b;
+}
+
+.samdu-modal-source-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.samdu-modal-source-btn:hover {
+  background: #1d4ed8;
+}
+
+.samdu-modal-source-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.samdu-modal-close-btn {
+  padding: 10px 18px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.samdu-modal-close-btn:hover {
+  background: #e2e8f0;
+}
+
+:root.dark-mode .samdu-modal-close-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+/* ========================================================
+   Mobile Responsiveness (Mobil Moslashuv)
+   ======================================================== */
+@media (max-width: 900px) {
+  .samdu-hero-card {
+    grid-template-columns: 1fr;
+  }
+  .samdu-hero-media {
+    min-height: 220px;
+    height: 220px;
+  }
+  .samdu-hero-info {
+    padding: 22px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .samdu-news-filter-panel {
+    padding: 12px;
+    gap: 12px;
+  }
+  .samdu-news-search-wrap {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+  .samdu-news-categories-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    width: 100%;
+  }
+  .samdu-news-cat-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .samdu-news-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .samdu-hero-title {
+    font-size: 18px;
+  }
+  .samdu-hero-desc {
+    font-size: 13px;
+  }
+  .samdu-modal-media {
+    height: 180px;
+  }
+  .samdu-modal-body {
+    padding: 18px 16px;
+  }
+  .samdu-modal-title {
+    font-size: 18px;
+  }
+  .samdu-modal-text {
+    font-size: 13.5px;
+  }
+  .samdu-modal-source-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .samdu-modal-close-btn {
+    width: 100%;
+  }
+}

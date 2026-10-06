@@ -2,10 +2,16 @@ import React from 'react';
 import { translate } from '../i18n';
 import { getSamduPageContent } from '../data/samduPagesData';
 import ScholarshipCalculator from './ScholarshipCalculator';
+import NewsPage from './NewsPage';
 import './InnerPage.css';
 
 export default function InnerPage({ pageIdentifier, language = 'uz', onBack, onNavigate }) {
   const t = (key) => translate(key, language);
+
+  if (pageIdentifier === 'Yangiliklar' || pageIdentifier === 'Unversitet yangiliklari') {
+    return <NewsPage language={language} onBack={onBack} />;
+  }
+
   const page = getSamduPageContent(pageIdentifier, language);
 
   if (!page) {
