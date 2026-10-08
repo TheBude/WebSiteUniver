@@ -9,6 +9,8 @@ import RectorWelcome from './components/RectorWelcome';
 import Footer from './components/Footer';
 import InnerPage from './components/InnerPage';
 import ScrollReveal from './components/ScrollReveal';
+import SamduFloatingLocationPill from './components/SamduFloatingLocationPill';
+import SamduChatBot from './components/SamduChatBot';
 import { translate } from './i18n';
 
 export default function App() {
@@ -165,6 +167,12 @@ export default function App() {
       <ScrollReveal animation="fade-up">
         <Footer language={language} onNavigate={handleNavigate} />
       </ScrollReveal>
+
+      {/* SamDU Lokatsiyasi tezkor suzuvchi indikatori */}
+      <SamduFloatingLocationPill language={language} />
+
+      {/* SamDU AI Maslahatchi ChatBot */}
+      <SamduChatBot language={language} onNavigate={handleNavigate} />
     </div>
   );
 }

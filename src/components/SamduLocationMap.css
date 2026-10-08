@@ -1,0 +1,782 @@
+/* ========================================================
+   SamDU Interaktiv Visual Xarita (Location Map) Stillari
+   Mobile va Desktop uchun to'liq moslashuvchan, zamonaviy dizayn
+   ======================================================== */
+
+.samdu-map-widget {
+  margin-top: 14px;
+  width: 100%;
+  border-radius: 14px;
+  background: rgba(15, 29, 56, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+:root.dark-mode .samdu-map-widget {
+  background: rgba(9, 18, 36, 0.9);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.55);
+}
+
+:root.vision-mode .samdu-map-widget {
+  background: #000000;
+  border: 2px solid #ffeb3b;
+  box-shadow: none;
+}
+
+.samdu-map-widget:hover {
+  border-color: rgba(96, 165, 250, 0.45);
+  box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+}
+
+:root.vision-mode .samdu-map-widget:hover {
+  border-color: #ffeb3b;
+  transform: none;
+}
+
+/* Header qismi */
+.samdu-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+:root.vision-mode .samdu-map-header {
+  background: #000000;
+  border-bottom: 1px solid #ffeb3b;
+}
+
+.samdu-map-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.01em;
+}
+
+:root.vision-mode .samdu-map-status-pill {
+  color: #ffeb3b;
+}
+
+.samdu-map-pulse-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  flex-shrink: 0;
+}
+
+.samdu-map-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(16, 185, 129, 0.45);
+  animation: mapPulse 2s infinite ease-out;
+}
+
+@keyframes mapPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.samdu-map-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.samdu-map-provider-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 10.5px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.3;
+}
+
+.samdu-map-provider-btn.is-active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+:root.vision-mode .samdu-map-provider-btn {
+  border-color: #ffeb3b;
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-map-provider-btn.is-active {
+  background: #ffeb3b;
+  color: #000000;
+  font-weight: 700;
+}
+
+.samdu-map-expand-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.samdu-map-expand-btn:hover {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+:root.vision-mode .samdu-map-expand-btn {
+  border-color: #ffeb3b;
+  color: #ffeb3b;
+}
+
+:root.vision-mode .samdu-map-expand-btn:hover {
+  background: #ffeb3b;
+  color: #000;
+}
+
+/* Xarita oynasi (Frame) */
+.samdu-map-frame-box {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  background: #0b1529;
+  overflow: hidden;
+}
+
+:root.vision-mode .samdu-map-frame-box {
+  background: #000000;
+}
+
+.samdu-map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: contrast(1.04) saturate(1.08);
+}
+
+:root.dark-mode .samdu-map-iframe {
+  filter: brightness(0.92) contrast(1.05);
+}
+
+:root.vision-mode .samdu-map-iframe {
+  filter: invert(0.9) hue-rotate(180deg) contrast(1.2);
+}
+
+/* Yuklanish holati skleti */
+.samdu-map-loading-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d1b33 0%, #172a4d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 11px;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.samdu-map-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #60a5fa;
+  border-radius: 50%;
+  animation: mapSpin 0.8s linear infinite;
+}
+
+@keyframes mapSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Xarita ustidagi mini teg */
+.samdu-map-overlay-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 3;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+:root.vision-mode .samdu-map-overlay-badge {
+  background: #000;
+  border: 1px solid #ffeb3b;
+  color: #ffeb3b;
+}
+
+.samdu-map-overlay-badge svg {
+  width: 12px;
+  height: 12px;
+  color: #ef4444;
+}
+
+/* Tugmalar paneli */
+.samdu-map-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+:root.vision-mode .samdu-map-actions {
+  background: #000;
+  border-top: 1px solid #ffeb3b;
+}
+
+.samdu-map-action-link,
+.samdu-map-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 550;
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.samdu-map-action-link svg,
+.samdu-map-action-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.samdu-map-action-link:hover,
+.samdu-map-action-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.samdu-map-action-primary {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(96, 165, 250, 0.35);
+  color: #93c5fd;
+}
+
+.samdu-map-action-primary:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-map-action-link,
+:root.vision-mode .samdu-map-action-btn {
+  background: #000;
+  border-color: #ffeb3b;
+  color: #fff;
+}
+
+:root.vision-mode .samdu-map-action-link:hover,
+:root.vision-mode .samdu-map-action-btn:hover {
+  background: #ffeb3b;
+  color: #000;
+}
+
+/* ========================================================
+   Kengaytirilgan (Modal) Xarita Stillari
+   ======================================================== */
+.samdu-map-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 12, 28, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: mapModalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes mapModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.samdu-map-modal-dialog {
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  background: #0f1d38;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: mapModalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root.dark-mode .samdu-map-modal-dialog {
+  background: #091224;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root.vision-mode .samdu-map-modal-dialog {
+  background: #000;
+  border: 3px solid #ffeb3b;
+}
+
+@keyframes mapModalSlideUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.samdu-map-modal-header {
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+:root.vision-mode .samdu-map-modal-header {
+  border-bottom: 2px solid #ffeb3b;
+}
+
+.samdu-map-modal-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:root.vision-mode .samdu-map-modal-title {
+  color: #ffeb3b;
+}
+
+.samdu-map-modal-title svg {
+  width: 20px;
+  height: 20px;
+  color: #3b82f6;
+}
+
+.samdu-map-modal-subtitle {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  color: #94a3b8;
+}
+
+.samdu-map-modal-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.samdu-map-modal-close-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+:root.vision-mode .samdu-map-modal-close-btn {
+  border-color: #ffeb3b;
+  color: #ffeb3b;
+}
+
+:root.vision-mode .samdu-map-modal-close-btn:hover {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.samdu-map-modal-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.samdu-map-modal-frame-box {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #0b1529;
+}
+
+.samdu-map-modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.samdu-map-modal-info-panel {
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+:root.vision-mode .samdu-map-modal-info-panel {
+  border-top: 1px solid #ffeb3b;
+}
+
+.samdu-map-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.samdu-map-info-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+:root.vision-mode .samdu-map-info-icon {
+  background: #000;
+  border-color: #ffeb3b;
+  color: #ffeb3b;
+}
+
+.samdu-map-info-text strong {
+  display: block;
+  font-size: 12.5px;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.samdu-map-info-text p {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.samdu-map-modal-footer {
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+:root.vision-mode .samdu-map-modal-footer {
+  border-top: 2px solid #ffeb3b;
+}
+
+.samdu-map-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.samdu-map-modal-btn-primary {
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  color: #ffffff;
+}
+
+.samdu-map-modal-btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.samdu-map-modal-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e2e8f0;
+}
+
+.samdu-map-modal-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-map-modal-btn-primary {
+  background: #ffeb3b;
+  color: #000;
+  border-color: #ffeb3b;
+}
+
+:root.vision-mode .samdu-map-modal-btn-secondary {
+  background: #000;
+  color: #ffeb3b;
+  border-color: #ffeb3b;
+}
+
+/* ========================================================
+   Floating Quick-Access Pill (Sahifaga kirganda chiqadigan)
+   ======================================================== */
+.samdu-floating-loc-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 92px;
+  z-index: 45;
+  background: rgba(15, 29, 56, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.45), 0 0 15px rgba(37, 99, 235, 0.25);
+  border-radius: 9999px;
+  padding: 4px 6px 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: floatingLocEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root.dark-mode .samdu-floating-loc-pill {
+  background: rgba(9, 18, 36, 0.95);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+:root.vision-mode .samdu-floating-loc-pill {
+  background: #000;
+  border: 2px solid #ffeb3b;
+  box-shadow: none;
+}
+
+.samdu-floating-loc-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: #60a5fa;
+  box-shadow: 0 14px 30px -4px rgba(37, 99, 235, 0.4);
+}
+
+:root.vision-mode .samdu-floating-loc-pill:hover {
+  border-color: #ffeb3b;
+  transform: none;
+}
+
+.samdu-floating-loc-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 650;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+:root.vision-mode .samdu-floating-loc-btn {
+  color: #ffeb3b;
+}
+
+.samdu-floating-loc-btn svg {
+  width: 16px;
+  height: 16px;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+:root.vision-mode .samdu-floating-loc-btn svg {
+  color: #ffeb3b;
+}
+
+.samdu-floating-loc-dismiss {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.samdu-floating-loc-dismiss:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+:root.vision-mode .samdu-floating-loc-dismiss {
+  color: #ffeb3b;
+  background: transparent;
+  border: 1px solid #ffeb3b;
+}
+
+@keyframes floatingLocEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scroll urg‘usi (Highlight Pulse Effect) */
+.samdu-map-highlight {
+  animation: mapWidgetPulseRing 1.5s ease-out;
+}
+
+@keyframes mapWidgetPulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.8), 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 99, 235, 0), 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0), 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ========================================================
+   Media Queries (Responsive Mobile & Tablet moslashuvi)
+   ======================================================== */
+@media (max-width: 768px) {
+  .samdu-map-modal-dialog {
+    max-height: 94vh;
+  }
+  .samdu-map-modal-frame-box {
+    height: 280px;
+  }
+  .samdu-map-modal-info-panel {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+  .samdu-map-modal-header {
+    padding: 14px 16px;
+  }
+  .samdu-map-modal-footer {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+  .samdu-map-modal-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .samdu-map-widget {
+    margin-top: 16px;
+  }
+  .samdu-map-frame-box {
+    height: 190px;
+  }
+  .samdu-map-actions {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 6px;
+  }
+  .samdu-map-action-link,
+  .samdu-map-action-btn {
+    font-size: 10px;
+    padding: 6px 4px;
+    gap: 3px;
+  }
+  .samdu-floating-loc-pill {
+    bottom: 16px;
+    left: 16px;
+    right: auto;
+    padding: 3px 5px 3px 10px;
+  }
+  .samdu-floating-loc-btn {
+    font-size: 11.5px;
+  }
+}

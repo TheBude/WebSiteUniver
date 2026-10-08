@@ -1,5 +1,6 @@
 import React from 'react';
 import { translate } from '../i18n';
+import SamduLocationMap from './SamduLocationMap';
 import './Footer.css';
 
 const quickLinks = [
@@ -150,6 +151,9 @@ export default function Footer({ language = 'uz', onNavigate }) {
                 <span className="samdu-req-line">{t('MFO:')} 00014</span>
                 <span className="samdu-req-line">{t('G‘aznachilik hisob raqami:')} 23402000300100001010</span>
               </div>
+
+              {/* SamDU Interaktiv Visual Xarita Vidjeti */}
+              <SamduLocationMap language={language} />
             </div>
           </div>
         </div>

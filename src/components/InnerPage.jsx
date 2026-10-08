@@ -3,6 +3,7 @@ import { translate } from '../i18n';
 import { getSamduPageContent } from '../data/samduPagesData';
 import ScholarshipCalculator from './ScholarshipCalculator';
 import NewsPage from './NewsPage';
+import SamduLocationMap from './SamduLocationMap';
 import './InnerPage.css';
 
 export default function InnerPage({ pageIdentifier, language = 'uz', onBack, onNavigate }) {
@@ -316,6 +317,7 @@ export default function InnerPage({ pageIdentifier, language = 'uz', onBack, onN
                     <span>{page.contact.email}</span>
                   </div>
                 )}
+                <SamduLocationMap language={language} />
               </div>
             </div>
           )}

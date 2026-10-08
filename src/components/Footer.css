@@ -28,8 +28,8 @@
 
 .samdu-footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr 1.1fr 1.2fr;
-  gap: 36px;
+  grid-template-columns: 1.25fr 0.85fr 0.95fr 1.45fr;
+  gap: 32px;
   margin-bottom: 40px;
 }
 

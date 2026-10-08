@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/vitest';
 import { afterEach, describe, expect, it } from 'vitest';
 import App from './App';
 import { getSearchCharacterCount, getSiteSearchResults } from './siteSearchIndex';
+import { getChatBotAnswer } from './utils/samduChatEngine';
 
 afterEach(() => {
   cleanup();
@@ -512,5 +513,132 @@ describe('Sidebar toggle', () => {
     expect(mobileTrigger).toHaveAttribute('aria-expanded', 'true');
     expect(document.body).toContainElement(mobileMenu);
     expect(mobileMenu).toHaveClass('fixed', 'opacity-100');
+  });
+});
+
+describe('SamDU Location Map Widget', () => {
+  it('renders interactive map in footer and opens full modal', () => {
+    render(<App />);
+
+    // Footer map widget is present
+    const mapWidget = document.getElementById('samdu-location-map-widget');
+    expect(mapWidget).toBeInTheDocument();
+    expect(within(mapWidget).getByText('Bosh bino lokatsiyasi')).toBeInTheDocument();
+
+    // Map iframe is rendered
+    const iframes = screen.getAllByTitle('SamDU interaktiv xaritasi');
+    expect(iframes.length).toBeGreaterThan(0);
+
+    // Provider toggle works
+    const osmBtn = within(mapWidget).getByRole('button', { name: 'OpenStreetMap' });
+    fireEvent.click(osmBtn);
+    expect(osmBtn).toHaveClass('is-active');
+
+    // Action buttons
+    expect(within(mapWidget).getByText('Marshrut')).toBeInTheDocument();
+    expect(within(mapWidget).getByText('Yandex')).toBeInTheDocument();
+
+    // Modal opens and closes
+    const expandBtn = within(mapWidget).getByTitle('To‘liq ko‘rish');
+    fireEvent.click(expandBtn);
+    expect(screen.getByText('Samarqand davlat universiteti (Bosh bino)')).toBeInTheDocument();
+
+    const closeBtn = screen.getByTitle('Xaritani yopish');
+    fireEvent.click(closeBtn);
+    expect(screen.queryByText('Samarqand davlat universiteti (Bosh bino)')).not.toBeInTheDocument();
+  });
+});
+
+describe('Navbar Animated Ticker', () => {
+  it('contains interactive links for location, phone, social networks with YouTube, and pauses on hover', () => {
+    render(<App />);
+
+    // Phone link
+    const phoneLink = screen.getByRole('link', { name: /\(66\) 240-38-40/i });
+    expect(phoneLink).toHaveAttribute('href', 'tel:+998662403840');
+
+    // Social links: YouTube instead of Twitter
+    const youtubeLinks = screen.getAllByRole('link', { name: 'YouTube' });
+    expect(youtubeLinks.some((l) => l.getAttribute('href') === 'https://www.youtube.com/@samduuz')).toBe(true);
+    expect(screen.queryByRole('link', { name: 'Twitter' })).not.toBeInTheDocument();
+
+    const telegramLinks = screen.getAllByRole('link', { name: 'Telegram' });
+    expect(telegramLinks.some((l) => l.getAttribute('href') === 'https://t.me/samduuz')).toBe(true);
+
+    const facebookLinks = screen.getAllByRole('link', { name: 'Facebook' });
+    expect(facebookLinks.some((l) => l.getAttribute('href') === 'https://www.facebook.com/samdu.uz')).toBe(true);
+
+    const instagramLinks = screen.getAllByRole('link', { name: 'Instagram' });
+    expect(instagramLinks.some((l) => l.getAttribute('href') === 'https://instagram.com/samdu_uz')).toBe(true);
+
+    // Location link
+    const locationLink = screen.getByRole('link', { name: /140104, Samarqand shahri, Universitet xiyoboni, 15-uy/i });
+    expect(locationLink).toHaveAttribute('href', '#samdu-location-map-widget');
+
+    // President quote link
+    const quoteLink = screen.getByRole('link', { name: /Agar mendan sizni nima qiynaydi/i });
+    expect(quoteLink).toHaveAttribute('href', '#Unversitet');
+
+    // Hover pause test
+    const bannerContainer = quoteLink.closest('.group\\/banner');
+    expect(bannerContainer).toBeInTheDocument();
+    fireEvent.mouseEnter(bannerContainer);
+    fireEvent.mouseLeave(bannerContainer);
+  });
+});
+
+describe('SamDU AI ChatBot and Knowledge Engine', () => {
+  it('correctly retrieves factual university data across languages', () => {
+    // Qabul 2026 facts
+    const admissionAnsUz = getChatBotAnswer('qabul 2026', 'uz');
+    expect(admissionAnsUz.text).toContain('Bakalavriat');
+    expect(admissionAnsUz.link?.hash).toBe('Qabul 2026');
+
+    // Fakultetlar
+    const facultiesAnsRu = getChatBotAnswer('факультеты', 'ru');
+    expect(facultiesAnsRu.text).toContain('Юридический');
+
+    // Stipendiya miqdorlari
+    const stipendAnsUz = getChatBotAnswer('stipendiya qancha', 'uz');
+    expect(stipendAnsUz.text).toContain('517 880');
+
+    // Manzil va xarita
+    const locAnsEn = getChatBotAnswer('where is campus', 'en');
+    expect(locAnsEn.text).toContain('University Boulevard');
+  });
+
+  it('renders chat trigger, opens chat window and handles user question', async () => {
+    render(<App />);
+
+    // Chatbot trigger tugmasi
+    const triggerBtn = screen.getByRole('button', { name: 'SamDU AI Maslahatchi' });
+    expect(triggerBtn).toBeInTheDocument();
+
+    // Trigger bosilganda chat oynasi ochiladi
+    fireEvent.click(triggerBtn);
+
+    const chatWindow = screen.getByRole('dialog');
+    expect(chatWindow).toBeInTheDocument();
+    expect(within(chatWindow).getByText('SamDU AI Maslahatchi')).toBeInTheDocument();
+
+    // Dastlabki salomlashuv xabari mavjud
+    expect(within(chatWindow).getByText(/Sharof Rashidov nomidagi Samarqand davlat universiteti/i)).toBeInTheDocument();
+
+    // Tezkor chip bosilishi
+    const quickChip = within(chatWindow).getByRole('button', { name: '🎓 Qabul 2026 qachon?' });
+    fireEvent.click(quickChip);
+
+    // Foydalanuvchi xabari ko'rinadi
+    expect(within(chatWindow).getByText('🎓 Qabul 2026 qachon?')).toBeInTheDocument();
+
+    // Yangi suhbat tugmasi
+    const resetBtn = within(chatWindow).getByRole('button', { name: 'Yangi suhbat' });
+    fireEvent.click(resetBtn);
+
+    // Chatni yopish
+    const closeBtn = within(chatWindow).getByRole('button', { name: 'Chatni yopish' });
+    fireEvent.click(closeBtn);
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });
