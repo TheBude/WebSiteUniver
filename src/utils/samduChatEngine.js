@@ -95,7 +95,7 @@ const knowledgeBase = [
   // 3. FAKULTETLAR VA INSTITUTLAR
   {
     id: 'faculties',
-    keywords: ['fakultet', 'fakultetlar', 'institut', 'institutlar', 'kafedra', 'yuridik', 'matematika', 'tarix', 'fizika', 'geografiya', 'biologiya', 'kimyo', 'fakulteti', 'instituti', 'faculties', 'institutes'],
+    keywords: ['fakultet', 'fakultetlar', 'institut', 'institutlar', 'kafedra', 'yuridik', 'matematika', 'tarix', 'fizika', 'geografiya', 'biologiya', 'kimyo', 'fakulteti', 'instituti', 'faculties', 'institutes', 'факультет', 'факультеты', 'институт', 'институты', 'кафедра', 'юридический', 'стипендия', 'стипендии'],
     response: {
       uz: {
         text: '🏛 **SamDUda 14 ta fakultet va 8 ta ilmiy-tadqiqot instituti mavjud:**\n\n**Asosiy fakultetlar:**\n• Yuridik fakulteti\n• Matematika fakulteti\n• Tarix fakulteti\n• Geografiya va ekologiya fakulteti\n• Telekommunikatsiya va kompyuter injiniring fakulteti\n• Psixologiya va ijtimoiy-siyosiy fanlar fakulteti\n\n**Institutlar:**\n• Sun’iy intellekt va raqamli texnologiyalar instituti\n• Yadro texnologiyalari instituti\n• Muhandislik fizikasi instituti\n• Biokimyo instituti\n• Agrobiotexnologiyalar va oziq-ovqat xavfsizligi instituti',
@@ -151,7 +151,7 @@ const knowledgeBase = [
   // 5. MANZIL, LOKATSIYA VA XARITA
   {
     id: 'location',
-    keywords: ['manzil', 'lokatsiya', 'joylashuv', 'qayerda', 'xarita', 'qanday boriladi', 'avtobus', 'bosh bino', 'bulvar', 'universitet xiyoboni', 'marshrut', 'location', 'address', 'map'],
+    keywords: ['manzil', 'lokatsiya', 'joylashuv', 'qayerda', 'xarita', 'qanday boriladi', 'avtobus', 'bosh bino', 'bulvar', 'universitet xiyoboni', 'marshrut', 'location', 'address', 'map', 'campus', 'where', 'directions', 'адрес', 'где', 'бульвар'],
     response: {
       uz: {
         text: '📍 **Samarqand davlat universiteti joylashuvi va xaritasi:**\n\n• **Manzil:** 140104, Samarqand shahri, Universitet xiyoboni, 15-uy.\n• **Mo‘ljal:** Mirzo Ulug‘bek xiyoboni, Registrator ofisi yonida.\n• **GPS Koordinatalari:** 39.64817° N, 66.95837° E.\n• **Jamoat transporti:** “Universitet xiyoboni” bekati (12, 19, 22, 52, 92-avtobuslar).\n\n*Saytimizning eng quyi qismida interaktiv Google/OSM xarita o‘rnatilgan.*',

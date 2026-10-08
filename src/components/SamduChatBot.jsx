@@ -43,8 +43,8 @@ export default function SamduChatBot({ language = 'uz', onNavigate }) {
 
   // Xabarlar ro'yxati pastiga avtomatik tushish
   useEffect(() => {
-    if (isOpen) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isOpen && typeof messagesEndRef.current?.scrollIntoView === 'function') {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping, isOpen]);
 

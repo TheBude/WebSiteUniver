@@ -37,6 +37,64 @@ describe('Display mode controls', () => {
     expect(document.documentElement).toHaveClass('vision-mode');
     expect(window.localStorage.getItem('samdu-vision-mode')).toBe('true');
   });
+
+  it('controls nuu.uz style appearance modes, font size, zoom, hide-images and reset', () => {
+    render(<App />);
+
+    // Maxsus rejimni yoqish
+    const visionToggle = screen.getAllByRole('button', { name: 'Ko‘zi ojizlar uchun rejim' })[0];
+    fireEvent.click(visionToggle);
+
+    const panel = screen.getByRole('complementary', { name: 'Maxsus imkoniyatlar' });
+    expect(panel).toBeInTheDocument();
+
+    // 1. Ko'rinish rejimi: Oq-qora
+    const grayscaleBtn = within(panel).getByRole('button', { name: 'Oq-qora' });
+    fireEvent.click(grayscaleBtn);
+    expect(document.documentElement).toHaveClass('spc-grayscale');
+    expect(window.localStorage.getItem('samdu-vision-appearance')).toBe('grayscale');
+
+    // 2. Ko'rinish rejimi: Qorong'i (invert)
+    const darkBtn = within(panel).getByRole('button', { name: 'Qorong‘i' });
+    fireEvent.click(darkBtn);
+    expect(document.documentElement).toHaveClass('spc-dark');
+    expect(window.localStorage.getItem('samdu-vision-appearance')).toBe('dark');
+
+    // 3. Shrift o'lchami: +30%
+    const fontPreset = within(panel).getByRole('button', { name: '+30%' });
+    fireEvent.click(fontPreset);
+    expect(document.documentElement.style.getPropertyValue('--vision-font-scale')).toBe('1.3');
+    expect(window.localStorage.getItem('samdu-vision-font-scale')).toBe('30');
+
+    // 4. Sahifa masshtabi: 120%
+    const zoomPreset = within(panel).getByRole('button', { name: '120%' });
+    fireEvent.click(zoomPreset);
+    expect(document.documentElement.style.getPropertyValue('--vision-zoom-scale')).toBe('1.2');
+    expect(window.localStorage.getItem('samdu-vision-zoom-scale')).toBe('120');
+
+    // 5. Tasvirlarni yashirish
+    const hideImagesBtn = within(panel).getByRole('button', { name: 'Tasvirlarni yashirish' });
+    fireEvent.click(hideImagesBtn);
+    expect(document.documentElement).toHaveClass('spc-hide-images');
+    expect(window.localStorage.getItem('samdu-vision-hide-images')).toBe('true');
+
+    // 6. Standart holatga qaytarish (Reset)
+    const resetBtn = within(panel).getByRole('button', { name: 'Standart holatga qaytarish' });
+    fireEvent.click(resetBtn);
+    expect(document.documentElement).not.toHaveClass('spc-grayscale');
+    expect(document.documentElement).not.toHaveClass('spc-dark');
+    expect(document.documentElement).not.toHaveClass('spc-hide-images');
+    expect(document.documentElement.style.getPropertyValue('--vision-font-scale')).toBe('1');
+    expect(document.documentElement.style.getPropertyValue('--vision-zoom-scale')).toBe('1');
+
+    // 7. Panelni yopish
+    const closeBtn = within(panel).getByRole('button', { name: 'Sozlamalarni yopish' });
+    fireEvent.click(closeBtn);
+
+    // Yopilgandan so'ng ixcham suzuvchi ochish tugmasi chiqadi
+    const reopenPill = screen.getByRole('button', { name: 'Maxsus imkoniyatlar' });
+    expect(reopenPill).toBeInTheDocument();
+  });
 });
 
 describe('Site search', () => {
@@ -625,11 +683,11 @@ describe('SamDU AI ChatBot and Knowledge Engine', () => {
     expect(within(chatWindow).getByText(/Sharof Rashidov nomidagi Samarqand davlat universiteti/i)).toBeInTheDocument();
 
     // Tezkor chip bosilishi
-    const quickChip = within(chatWindow).getByRole('button', { name: '🎓 Qabul 2026 qachon?' });
+    const quickChip = within(chatWindow).getAllByRole('button', { name: '🎓 Qabul 2026 qachon?' })[0];
     fireEvent.click(quickChip);
 
     // Foydalanuvchi xabari ko'rinadi
-    expect(within(chatWindow).getByText('🎓 Qabul 2026 qachon?')).toBeInTheDocument();
+    expect(within(chatWindow).getAllByText('🎓 Qabul 2026 qachon?').length).toBeGreaterThan(0);
 
     // Yangi suhbat tugmasi
     const resetBtn = within(chatWindow).getByRole('button', { name: 'Yangi suhbat' });

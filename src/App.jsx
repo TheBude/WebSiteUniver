@@ -11,16 +11,43 @@ import InnerPage from './components/InnerPage';
 import ScrollReveal from './components/ScrollReveal';
 import SamduFloatingLocationPill from './components/SamduFloatingLocationPill';
 import SamduChatBot from './components/SamduChatBot';
+import SpecialViewArea from './components/SpecialViewArea';
 import { translate } from './i18n';
 
 export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => window.localStorage.getItem('samdu-dark-mode') === 'true');
   const [isVisionMode, setIsVisionMode] = useState(() => window.localStorage.getItem('samdu-vision-mode') === 'true');
+  const [visionAppearance, setVisionAppearance] = useState(() => window.localStorage.getItem('samdu-vision-appearance') || 'normal');
+  const [visionFontScale, setVisionFontScale] = useState(() => {
+    const val = Number(window.localStorage.getItem('samdu-vision-font-scale'));
+    return Number.isFinite(val) && val >= 0 ? val : 0;
+  });
+  const [visionZoomScale, setVisionZoomScale] = useState(() => {
+    const val = Number(window.localStorage.getItem('samdu-vision-zoom-scale'));
+    return Number.isFinite(val) && val >= 100 ? val : 100;
+  });
+  const [visionHideImages, setVisionHideImages] = useState(() => window.localStorage.getItem('samdu-vision-hide-images') === 'true');
+  const [isVisionToolbarOpen, setIsVisionToolbarOpen] = useState(() => window.localStorage.getItem('samdu-vision-mode') === 'true');
   const [language, setLanguage] = useState(() => {
     const savedLanguage = window.localStorage.getItem('samdu-language');
     return ['uz', 'qr', 'ru', 'en'].includes(savedLanguage) ? savedLanguage : 'uz';
   });
+
+  const handleToggleVisionMode = () => {
+    setIsVisionMode((prev) => {
+      const next = !prev;
+      setIsVisionToolbarOpen(next);
+      return next;
+    });
+  };
+
+  const handleResetVisionSettings = () => {
+    setVisionAppearance('normal');
+    setVisionFontScale(0);
+    setVisionZoomScale(100);
+    setVisionHideImages(false);
+  };
 
   const [currentHash, setCurrentHash] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -43,9 +70,26 @@ export default function App() {
     const root = document.documentElement;
     root.classList.toggle('dark-mode', isDarkMode);
     root.classList.toggle('vision-mode', isVisionMode);
+
+    if (isVisionMode) {
+      root.classList.toggle('spc-grayscale', visionAppearance === 'grayscale');
+      root.classList.toggle('spc-dark', visionAppearance === 'dark');
+      root.classList.toggle('spc-hide-images', visionHideImages);
+      root.style.setProperty('--vision-font-scale', String((100 + visionFontScale) / 100));
+      root.style.setProperty('--vision-zoom-scale', String(visionZoomScale / 100));
+    } else {
+      root.classList.remove('spc-grayscale', 'spc-dark', 'spc-hide-images');
+      root.style.removeProperty('--vision-font-scale');
+      root.style.removeProperty('--vision-zoom-scale');
+    }
+
     window.localStorage.setItem('samdu-dark-mode', String(isDarkMode));
     window.localStorage.setItem('samdu-vision-mode', String(isVisionMode));
-  }, [isDarkMode, isVisionMode]);
+    window.localStorage.setItem('samdu-vision-appearance', visionAppearance);
+    window.localStorage.setItem('samdu-vision-font-scale', String(visionFontScale));
+    window.localStorage.setItem('samdu-vision-zoom-scale', String(visionZoomScale));
+    window.localStorage.setItem('samdu-vision-hide-images', String(visionHideImages));
+  }, [isDarkMode, isVisionMode, visionAppearance, visionFontScale, visionZoomScale, visionHideImages]);
 
   // Hash-based SPA routing
   useEffect(() => {
@@ -98,13 +142,30 @@ export default function App() {
 
   return (
     <div className="site-shell min-h-screen pl-0 md:pl-16">
+      <SpecialViewArea
+        language={language}
+        isOpen={isVisionToolbarOpen}
+        onClose={() => setIsVisionToolbarOpen(false)}
+        isVisionMode={isVisionMode}
+        onToggleVisionMode={handleToggleVisionMode}
+        appearance={visionAppearance}
+        onChangeAppearance={setVisionAppearance}
+        fontScale={visionFontScale}
+        onChangeFontScale={setVisionFontScale}
+        zoomScale={visionZoomScale}
+        onChangeZoomScale={setVisionZoomScale}
+        hideImages={visionHideImages}
+        onToggleHideImages={() => setVisionHideImages((prev) => !prev)}
+        onReset={handleResetVisionSettings}
+      />
+
       <HeaderBanner
         language={language}
         onLanguageChange={changeLanguage}
         isDarkMode={isDarkMode}
         onToggleDarkMode={() => setIsDarkMode((mode) => !mode)}
         isVisionMode={isVisionMode}
-        onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
+        onToggleVisionMode={handleToggleVisionMode}
         isSidebarOpen={isSidebarOpen}
         onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
       />
@@ -118,7 +179,7 @@ export default function App() {
         isDarkMode={isDarkMode}
         onToggleDarkMode={() => setIsDarkMode((mode) => !mode)}
         isVisionMode={isVisionMode}
-        onToggleVisionMode={() => setIsVisionMode((mode) => !mode)}
+        onToggleVisionMode={handleToggleVisionMode}
       />
 
       <main className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8">

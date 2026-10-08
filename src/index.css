@@ -7,6 +7,8 @@
   color-scheme: light;
   --page-background: #f8fafc;
   --page-foreground: #0f172a;
+  --vision-font-scale: 1;
+  --vision-zoom-scale: 1;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +23,7 @@
 
 :root.vision-mode {
   color-scheme: dark;
-  font-size: 112.5%;
+  font-size: calc(100% * var(--vision-font-scale, 1.125)) !important;
   --page-background: #000;
   --page-foreground: #fff;
 }
@@ -92,6 +94,49 @@ body {
 :root.vision-mode a {
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+}
+
+html.vision-mode body {
+  zoom: var(--vision-zoom-scale, 1);
+}
+
+/* 1. Oq-qora rejim (Grayscale 100%) */
+html.spc-grayscale {
+  filter: grayscale(100%) !important;
+  -webkit-filter: grayscale(100%) !important;
+}
+
+/* 2. Qorong'i / Yuqori kontrastli invert rejim (nuu.uz blackAndWhiteInvert) */
+html.spc-dark {
+  filter: grayscale(100%) invert(100%) !important;
+  -webkit-filter: grayscale(100%) invert(100%) !important;
+  background-color: #000 !important;
+}
+
+/* Invert paytida rasmlar, videolar va xaritalar teskari bo'lib (rentgen) qolmasligi uchun */
+html.spc-dark img,
+html.spc-dark video,
+html.spc-dark iframe,
+html.spc-dark canvas,
+html.spc-dark .spc-media-preserve {
+  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+}
+
+/* Maxsus imkoniyatlar paneli foydalanuvchiga tabiiy rangda ko'rinib turishi uchun */
+html.spc-dark .spc-panel-preserve {
+  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+}
+
+/* 3. Tasvirlarni yashirish rejimi */
+html.spc-hide-images img:not(.keep-visible),
+html.spc-hide-images video,
+html.spc-hide-images picture,
+html.spc-hide-images [style*="background-image"]:not(.keep-visible) {
+  opacity: 0 !important;
+  filter: grayscale(100%) !important;
+  pointer-events: none !important;
 }
 
 * {
