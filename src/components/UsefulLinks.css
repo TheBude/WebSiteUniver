@@ -1,0 +1,122 @@
+/* ========================================================
+   SamDU UsefulLinks (Foydali Saytlar) Stillari
+   Yorug', Tungi (Dark) va Ko'zi ojizlar (Vision Mode) rejimlari
+   ======================================================== */
+
+.useful-link-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.useful-link-card:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.15);
+}
+
+/* -----------------------------------------
+   TUNGI REJIM (DARK MODE)
+   ----------------------------------------- */
+:root.dark-mode .useful-link-card,
+:root.dark .useful-link-card {
+  background: #0f1d38 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+:root.dark-mode .useful-link-card:hover,
+:root.dark .useful-link-card:hover {
+  background: #15274d !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 14px 30px -4px rgba(56, 189, 248, 0.25) !important;
+}
+
+:root.dark-mode .useful-link-title,
+:root.dark .useful-link-title {
+  color: #ffffff !important;
+}
+
+:root.dark-mode .useful-link-domain,
+:root.dark .useful-link-domain {
+  color: #94a3b8 !important;
+}
+
+:root.dark-mode .useful-link-arrow,
+:root.dark .useful-link-arrow {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #94a3b8 !important;
+}
+
+:root.dark-mode .useful-link-card:hover .useful-link-arrow,
+:root.dark .useful-link-card:hover .useful-link-arrow {
+  background: rgba(56, 189, 248, 0.2) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+/* -----------------------------------------
+   KO'ZI OJIZLAR UCHUN YUQORI KONTRASTLI REJIM (VISION MODE)
+   ----------------------------------------- */
+:root.vision-mode #useful-links-section {
+  color: #ffffff !important;
+}
+
+:root.vision-mode .useful-link-badge {
+  background: #000000 !important;
+  border: 2px solid #ffeb3b !important;
+  color: #ffeb3b !important;
+  font-weight: 800 !important;
+}
+
+:root.vision-mode #useful-links-title {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+:root.vision-mode .useful-link-card {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+:root.vision-mode .useful-link-card:hover,
+:root.vision-mode .useful-link-card:focus-visible {
+  background: #111111 !important;
+  border-color: #ffeb3b !important;
+  outline: 3px solid #ffeb3b !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 16px rgba(255, 235, 59, 0.4) !important;
+}
+
+:root.vision-mode .useful-link-icon-box {
+  background: #000000 !important;
+  border: 2px solid #ffeb3b !important;
+  color: #ffeb3b !important;
+}
+
+:root.vision-mode .useful-link-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+:root.vision-mode .useful-link-domain {
+  color: #ffeb3b !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+}
+
+:root.vision-mode .useful-link-arrow {
+  background: #000000 !important;
+  border: 2px solid #ffeb3b !important;
+  color: #ffeb3b !important;
+}
+
+:root.vision-mode .useful-link-card:hover .useful-link-arrow {
+  background: #ffeb3b !important;
+  color: #000000 !important;
+}

@@ -12,6 +12,7 @@ import ScrollReveal from './components/ScrollReveal';
 import SamduFloatingLocationPill from './components/SamduFloatingLocationPill';
 import SamduChatBot from './components/SamduChatBot';
 import SpecialViewArea from './components/SpecialViewArea';
+import UsefulLinks from './components/UsefulLinks';
 import { translate } from './i18n';
 
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('dark-mode', isDarkMode);
+    root.classList.toggle('dark', isDarkMode);
     root.classList.toggle('vision-mode', isVisionMode);
 
     if (isVisionMode) {
@@ -211,6 +213,11 @@ export default function App() {
             {/* 5. Rektor murojaati va ilmiy salohiyat bloki */}
             <ScrollReveal animation="zoom-in">
               <RectorWelcome language={language} onNavigate={handleNavigate} />
+            </ScrollReveal>
+
+            {/* 6. Foydali saytlar va manbalar (gov.uz, edu.uz, ziyonet.uz, lex.uz, uza.uz, my.gov.uz) */}
+            <ScrollReveal animation="fade-up">
+              <UsefulLinks language={language} />
             </ScrollReveal>
           </>
         ) : (

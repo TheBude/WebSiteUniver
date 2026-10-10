@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark-mode, .dark-mode *));
+
 :root {
   font-family: Inter, 'Segoe UI', sans-serif;
   line-height: 1.5;
@@ -15,9 +17,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root.dark-mode {
+:root.dark-mode,
+:root.dark {
   color-scheme: dark;
-  --page-background: #111827;
+  --page-background: #0b1329;
   --page-foreground: #f8fafc;
 }
 
@@ -76,7 +79,8 @@ body {
   background-color: var(--page-background);
 }
 
-:root.dark-mode body {
+:root.dark-mode body,
+:root.dark body {
   background:
     radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 35%),
     var(--page-background);

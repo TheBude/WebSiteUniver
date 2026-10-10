@@ -12,6 +12,55 @@
   user-select: none;
 }
 
+:root.dark-mode .home-carousel,
+:root.dark .home-carousel {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+:root.vision-mode .home-carousel {
+  border: 3px solid #ffeb3b !important;
+  background: #000000 !important;
+  box-shadow: none !important;
+}
+
+:root.vision-mode .home-carousel__shade {
+  background: rgba(0, 0, 0, 0.85) !important;
+}
+
+:root.vision-mode .home-carousel__category {
+  color: #ffeb3b !important;
+  font-weight: 800 !important;
+}
+
+:root.vision-mode .home-carousel__content h2 {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+:root.vision-mode .home-carousel__arrow-btn {
+  background: #000000 !important;
+  border: 2px solid #ffeb3b !important;
+  color: #ffeb3b !important;
+  opacity: 1 !important;
+}
+
+:root.vision-mode .home-carousel__arrow-btn:hover {
+  background: #ffeb3b !important;
+  color: #000000 !important;
+}
+
+:root.vision-mode .home-carousel__dot {
+  background: #555555 !important;
+  border: 1px solid #ffffff !important;
+}
+
+:root.vision-mode .home-carousel__dot.is-active {
+  background: #ffeb3b !important;
+  border-color: #ffeb3b !important;
+}
+
 /* Slayd, rasm va qoraytirish foni */
 .home-carousel__slide,
 .home-carousel__image,

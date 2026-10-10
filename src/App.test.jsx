@@ -8,7 +8,7 @@ import { getChatBotAnswer } from './utils/samduChatEngine';
 afterEach(() => {
   cleanup();
   window.localStorage.clear();
-  document.documentElement.classList.remove('dark-mode', 'vision-mode');
+  document.documentElement.classList.remove('dark-mode', 'dark', 'vision-mode', 'spc-grayscale', 'spc-dark', 'spc-hide-images');
 });
 
 describe('Display mode controls', () => {
@@ -22,6 +22,7 @@ describe('Display mode controls', () => {
     expect(toggles[0]).toHaveAttribute('aria-pressed', 'true');
     expect(toggles[1]).toHaveAttribute('aria-pressed', 'true');
     expect(document.documentElement).toHaveClass('dark-mode');
+    expect(document.documentElement).toHaveClass('dark');
     expect(window.localStorage.getItem('samdu-dark-mode')).toBe('true');
   });
 
@@ -698,5 +699,36 @@ describe('SamDU AI ChatBot and Knowledge Engine', () => {
     fireEvent.click(closeBtn);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+});
+
+describe('UsefulLinks component', () => {
+  it('renders section badge, title, and all 6 external links with proper attributes', () => {
+    render(<App />);
+
+    // Sarlavha va badge
+    expect(screen.getByText('FOYDALI MANBALAR')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Foydali Saytlar' })).toBeInTheDocument();
+
+    // 6 ta card havolalari
+    const govLink = screen.getByRole('link', { name: /O'zbekiston respublikasi hukumat portali/i });
+    expect(govLink).toHaveAttribute('href', 'https://gov.uz/oz');
+    expect(govLink).toHaveAttribute('target', '_blank');
+    expect(govLink).toHaveAttribute('rel', 'noopener noreferrer');
+
+    const eduLink = screen.getByRole('link', { name: /Oliy ta'lim vazirligi/i });
+    expect(eduLink).toHaveAttribute('href', 'https://edu.uz/oz');
+
+    const ziyoLink = screen.getByRole('link', { name: /ZiyoNet ta'lim portali/i });
+    expect(ziyoLink).toHaveAttribute('href', 'https://ziyonet.uz/');
+
+    const lexLink = screen.getByRole('link', { name: /Qonun hujjatlari ma'lumotlar bazasi/i });
+    expect(lexLink).toHaveAttribute('href', 'https://lex.uz/');
+
+    const uzaLink = screen.getByRole('link', { name: /O'zbekiston Milliy axborot agentligi/i });
+    expect(uzaLink).toHaveAttribute('href', 'https://uza.uz/oz');
+
+    const myGovLink = screen.getByRole('link', { name: /Yagona interaktiv davlat xizmatlari/i });
+    expect(myGovLink).toHaveAttribute('href', 'https://my.gov.uz/oz');
   });
 });

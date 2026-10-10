@@ -13,10 +13,17 @@
   touch-action: pan-y;
 }
 
-:root.dark-mode .samdu-services-panel {
-  background: #1e293b;
-  border-color: #334155;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+:root.dark-mode .samdu-services-panel,
+:root.dark .samdu-services-panel {
+  background: #0f1d38;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+:root.vision-mode .samdu-services-panel {
+  background: #000000 !important;
+  border: 2px solid #ffeb3b !important;
+  box-shadow: none !important;
 }
 
 .samdu-services-viewport {
@@ -97,15 +104,33 @@
   box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.18);
 }
 
-:root.dark-mode .samdu-service-card {
-  background: #0f172a;
-  border-color: #1e293b;
+:root.dark-mode .samdu-service-card,
+:root.dark .samdu-service-card {
+  background: #14234b;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
-:root.dark-mode .samdu-service-card:hover {
-  background: #1e293b;
-  border-color: #3b82f6;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+:root.dark-mode .samdu-service-card:hover,
+:root.dark .samdu-service-card:hover {
+  background: #1a2f66;
+  border-color: #38bdf8;
+  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.2);
+}
+
+:root.vision-mode .samdu-service-card {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+:root.vision-mode .samdu-service-card:hover,
+:root.vision-mode .samdu-service-card:focus-visible {
+  background: #111111 !important;
+  border-color: #ffeb3b !important;
+  outline: 3px solid #ffeb3b !important;
+  outline-offset: 2px !important;
 }
 
 /* Icon qutisi */
@@ -130,8 +155,13 @@
   color: #1d4ed8;
 }
 
-:root.dark-mode .samdu-service-icon-box {
+:root.dark-mode .samdu-service-icon-box,
+:root.dark .samdu-service-icon-box {
   color: #60a5fa;
+}
+
+:root.vision-mode .samdu-service-icon-box {
+  color: #ffeb3b !important;
 }
 
 /* Erasmus nishoni */
@@ -181,8 +211,25 @@
   color: #1e40af;
 }
 
-:root.dark-mode .samdu-service-title {
-  color: #93c5fd;
+:root.dark-mode .samdu-service-title,
+:root.dark .samdu-service-title {
+  color: #f1f5f9;
+}
+
+:root.vision-mode .samdu-service-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+:root.vision-mode .samdu-erasmus-logo {
+  border: 2px solid #ffeb3b !important;
+  background: #000000 !important;
+  color: #ffeb3b !important;
+}
+
+:root.vision-mode .samdu-erasmus-text {
+  color: #ffeb3b !important;
+  font-weight: 800 !important;
 }
 
 /* Pastki nuqtalar (Dots) */
@@ -209,12 +256,24 @@
   background: #2563eb;
 }
 
-:root.dark-mode .samdu-dot {
+:root.dark-mode .samdu-dot,
+:root.dark .samdu-dot {
   background: #475569;
 }
 
-:root.dark-mode .samdu-dot.active {
-  background: #3b82f6;
+:root.dark-mode .samdu-dot.active,
+:root.dark .samdu-dot.active {
+  background: #38bdf8;
+}
+
+:root.vision-mode .samdu-dot {
+  background: #555555 !important;
+  border: 1px solid #ffffff !important;
+}
+
+:root.vision-mode .samdu-dot.active {
+  background: #ffeb3b !important;
+  border-color: #ffeb3b !important;
 }
 
 /* =========================================
